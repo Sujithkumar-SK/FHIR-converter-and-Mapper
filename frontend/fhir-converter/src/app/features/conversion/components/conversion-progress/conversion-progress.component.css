@@ -1,0 +1,46 @@
+.conversion-progress-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-header h4 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.status-section {
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.progress-section .progress {
+  border-radius: 10px;
+  background: #e9ecef;
+}
+
+.stats-section .stat-card {
+  text-align: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.stat-card .stat-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.stat-card .stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.stat-card .stat-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}

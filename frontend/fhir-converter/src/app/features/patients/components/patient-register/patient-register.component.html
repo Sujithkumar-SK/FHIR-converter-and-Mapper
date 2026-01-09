@@ -1,0 +1,160 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-8 col-xl-6">
+    <div class="card shadow-lg border-0 auth-card">
+      <div class="card-header text-white text-center py-4">
+        <div class="mb-3">
+          <i class="fas fa-user-plus fa-3x mb-3 text-white"></i>
+        </div>
+        <h2 class="mb-0 fw-bold">
+          <i class="fas fa-id-card me-2"></i>
+          Register Patient
+        </h2>
+        <p class="mb-0 mt-2 opacity-90 fs-5">Add new patient identifier</p>
+        <small class="opacity-75">Create patient record for your organization</small>
+      </div>
+      
+      <div class="card-body">
+        <!-- Success Alert -->
+        <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+          <i class="fas fa-check-circle me-2"></i>
+          {{ successMessage }}
+          <button type="button" class="btn-close" (click)="successMessage = ''" aria-label="Close"></button>
+        </div>
+
+        <!-- Error Alert -->
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          {{ errorMessage }}
+          <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <!-- Local Patient ID -->
+          <div class="mb-4">
+            <label for="localPatientId" class="form-label">
+              <i class="fas fa-id-badge me-2 text-primary"></i>Local Patient ID *
+            </label>
+            <input
+              type="text"
+              id="localPatientId"
+              formControlName="localPatientId"
+              class="form-control form-control-lg"
+              [class.is-invalid]="isFieldInvalid('localPatientId')"
+              placeholder="Enter your hospital's patient ID">
+            <div *ngIf="isFieldInvalid('localPatientId')" class="invalid-feedback">
+              {{ getFieldError('localPatientId') }}
+            </div>
+            <small class="form-text text-muted">
+              <i class="fas fa-info-circle me-1"></i>
+              Your organization's internal patient identifier
+            </small>
+          </div>
+
+          <div class="row">
+            <!-- First Name -->
+            <div class="col-md-6 mb-4">
+              <label for="firstName" class="form-label">
+                <i class="fas fa-user me-2 text-primary"></i>First Name
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                formControlName="firstName"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('firstName')"
+                placeholder="Enter first name">
+              <div *ngIf="isFieldInvalid('firstName')" class="invalid-feedback">
+                {{ getFieldError('firstName') }}
+              </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="col-md-6 mb-4">
+              <label for="lastName" class="form-label">
+                <i class="fas fa-user me-2 text-primary"></i>Last Name *
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('lastName')"
+                placeholder="Enter last name">
+              <div *ngIf="isFieldInvalid('lastName')" class="invalid-feedback">
+                {{ getFieldError('lastName') }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="mb-4">
+            <label for="dateOfBirth" class="form-label">
+              <i class="fas fa-calendar me-2 text-primary"></i>Date of Birth
+            </label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              formControlName="dateOfBirth"
+              class="form-control form-control-lg"
+              [class.is-invalid]="isFieldInvalid('dateOfBirth')">
+            <div *ngIf="isFieldInvalid('dateOfBirth')" class="invalid-feedback">
+              {{ getFieldError('dateOfBirth') }}
+            </div>
+            <small class="form-text text-muted">
+              <i class="fas fa-info-circle me-1"></i>
+              Optional - helps with cross-hospital patient matching
+            </small>
+          </div>
+
+          <!-- Organization Info -->
+          <div class="mb-4">
+            <div class="alert alert-info border-0">
+              <i class="fas fa-hospital me-2"></i>
+              <strong>Organization:</strong> {{ currentUser?.organizationName || 'Your Organization' }}
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="row mb-4">
+            <div class="col-md-6 mb-2">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg w-100 py-3"
+                [disabled]="isLoading || registerForm.invalid">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                <i *ngIf="!isLoading" class="fas fa-save me-2"></i>
+                {{ isLoading ? 'Registering...' : 'Register Patient' }}
+              </button>
+            </div>
+            <div class="col-md-6 mb-2">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg w-100 py-3"
+                (click)="clearForm()"
+                [disabled]="isLoading">
+                <i class="fas fa-times me-2"></i>
+                Clear Form
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Help Text -->
+        <div class="border-top pt-4">
+          <div class="row text-center">
+            <div class="col-md-6 mb-3">
+              <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+              <h6>Secure Storage</h6>
+              <small class="text-muted">All patient data is encrypted</small>
+            </div>
+            <div class="col-md-6 mb-3">
+              <i class="fas fa-link fa-2x text-primary mb-2"></i>
+              <h6>Cross-Hospital Linking</h6>
+              <small class="text-muted">Enables data sharing between hospitals</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

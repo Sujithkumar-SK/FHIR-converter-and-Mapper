@@ -1,0 +1,46 @@
+.form-select:disabled {
+  background-color: #f8f9fa;
+  opacity: 0.65;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.patient-item {
+  transition: background-color 0.2s;
+}
+
+.patient-item:hover {
+  background-color: #f8f9fa;
+}
+
+.patient-item.selected {
+  background-color: #e3f2fd;
+  border-left: 4px solid #2196f3;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.patient-list {
+  background-color: #fff;
+}
+
+.patient-list:empty::after {
+  content: 'No patients found';
+  display: block;
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}

@@ -1,0 +1,57 @@
+2026-01-05 15:28:11 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-05 15:28:11 [INF] Now listening on: http://localhost:5201
+2026-01-05 15:28:11 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-05 15:28:11 [INF] Hosting environment: Development
+2026-01-05 15:28:11 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-05 15:29:05 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-05 15:29:05 [WRN] Failed to determine the https port for redirect.
+2026-01-05 15:29:05 [INF] CORS policy execution successful.
+2026-01-05 15:29:05 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 132.9312ms
+2026-01-05 15:29:05 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-05 15:29:05 [INF] CORS policy execution successful.
+2026-01-05 15:29:05 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-05 15:29:05 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-05 15:29:06 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-05 15:29:09 [INF] Executed DbCommand (14ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-05 15:29:09 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: "e73aefa2-97a0-4374-e43b-08de4ae8fd5f"
+2026-01-05 15:29:09 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-05 15:29:09 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 3470.5695ms
+2026-01-05 15:29:09 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-05 15:29:09 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 3682.4788ms
+2026-01-05 15:32:14 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-05 15:32:14 [INF] CORS policy execution successful.
+2026-01-05 15:32:14 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 15.6794ms
+2026-01-05 15:32:14 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 56
+2026-01-05 15:32:14 [INF] CORS policy execution successful.
+2026-01-05 15:32:14 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-05 15:32:14 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-05 15:32:14 [INF] Login attempt started for email: sujinano777@gmail.com
+2026-01-05 15:32:14 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-05 15:32:14 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 43.9953ms
+2026-01-05 15:32:14 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-05 15:32:14 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 400 null application/json; charset=utf-8 185.216ms
+2026-01-05 15:33:05 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-05 15:33:05 [INF] CORS policy execution successful.
+2026-01-05 15:33:05 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 5.4148ms
+2026-01-05 15:33:05 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 55
+2026-01-05 15:33:05 [INF] CORS policy execution successful.
+2026-01-05 15:33:05 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-05 15:33:05 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-05 15:33:05 [INF] Login attempt started for email: sujinano777@gmail.com
+2026-01-05 15:33:05 [INF] Executed DbCommand (3ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-05 15:33:05 [INF] Login completed successfully for email: sujinano777@gmail.com, UserId: "f3381aa2-5e72-48bb-e43c-08de4ae8fd5f"
+2026-01-05 15:33:05 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-05 15:33:05 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 221.4094ms
+2026-01-05 15:33:05 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-05 15:33:05 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 265.2317ms
+2026-01-05 15:50:13 [INF] Application is shutting down...

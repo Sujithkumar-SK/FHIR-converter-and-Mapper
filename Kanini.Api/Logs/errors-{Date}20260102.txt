@@ -1,0 +1,118 @@
+2026-01-02 21:26:03.422 +05:30 [ERR] Error executing stored procedure: sp_CheckUserExistsByEmail
+System.ArgumentException: Keyword not supported: 'command timeout'.
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at System.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at System.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at System.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at System.Data.SqlClient.SqlConnection..ctor(String connectionString)
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 24
+2026-01-02 21:26:03.541 +05:30 [ERR] Registration OTP failed for email: sujithkumarsenthilkumar777@gmail.com, Error: Keyword not supported: 'command timeout'.
+System.ArgumentException: Keyword not supported: 'command timeout'.
+   at System.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at System.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at System.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at System.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at System.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at System.Data.SqlClient.SqlConnection..ctor(String connectionString)
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 24
+   at Kanini.Data.Repositories.Users.UserReadRepository.ExistsByEmailAsync(String email) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserReadRepository.cs:line 24
+   at Kanini.Application.Services.Users.AuthService.RegisterWithOtpAsync(RegisterWithOtpRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\AuthService.cs:line 51
+2026-01-02 21:29:36.875 +05:30 [ERR] Error executing stored procedure: sp_CheckUserExistsByEmail
+System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Named Pipes Provider, error: 0 - No process is on the other end of the pipe.)
+ ---> System.ComponentModel.Win32Exception (233): No process is on the other end of the pipe.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 488
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 25
+ClientConnectionId:1e3ddb8b-593b-4b94-b319-33f49c745281
+Error Number:233,State:0,Class:20
+2026-01-02 21:29:37.010 +05:30 [ERR] Registration OTP failed for email: sujithkumarsenthilkumar777@gmail.com, Error: A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Named Pipes Provider, error: 0 - No process is on the other end of the pipe.)
+System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Named Pipes Provider, error: 0 - No process is on the other end of the pipe.)
+ ---> System.ComponentModel.Win32Exception (233): No process is on the other end of the pipe.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 488
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 25
+   at Kanini.Data.Repositories.Users.UserReadRepository.ExistsByEmailAsync(String email) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserReadRepository.cs:line 24
+   at Kanini.Application.Services.Users.AuthService.RegisterWithOtpAsync(RegisterWithOtpRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\AuthService.cs:line 51
+ClientConnectionId:1e3ddb8b-593b-4b94-b319-33f49c745281
+Error Number:233,State:0,Class:20
+2026-01-02 21:32:05.377 +05:30 [ERR] Error executing stored procedure: sp_CheckUserExistsByEmail
+System.Data.SqlClient.SqlException (0x80131904): The instance of SQL Server you attempted to connect to does not support encryption.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 488
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 25
+ClientConnectionId:68c0e153-33e8-43f0-a3ed-fe75ed674e75
+Error Number:20,State:0,Class:20
+2026-01-02 21:32:05.441 +05:30 [ERR] Registration OTP failed for email: sujithkumarsenthilkumar777@gmail.com, Error: The instance of SQL Server you attempted to connect to does not support encryption.
+System.Data.SqlClient.SqlException (0x80131904): The instance of SQL Server you attempted to connect to does not support encryption.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 488
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 25
+   at Kanini.Data.Repositories.Users.UserReadRepository.ExistsByEmailAsync(String email) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserReadRepository.cs:line 24
+   at Kanini.Application.Services.Users.AuthService.RegisterWithOtpAsync(RegisterWithOtpRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\AuthService.cs:line 51
+ClientConnectionId:68c0e153-33e8-43f0-a3ed-fe75ed674e75
+Error Number:20,State:0,Class:20
+2026-01-02 21:32:29.025 +05:30 [ERR] Error executing stored procedure: sp_CheckUserExistsByEmail
+System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Named Pipes Provider, error: 0 - No process is on the other end of the pipe.)
+ ---> System.ComponentModel.Win32Exception (233): No process is on the other end of the pipe.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 488
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 25
+ClientConnectionId:812f7734-e182-4406-a99a-f599b2c67fc8
+Error Number:233,State:0,Class:20
+2026-01-02 21:32:29.172 +05:30 [ERR] Registration OTP failed for email: sujithkumarsenthilkumar777@gmail.com, Error: A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Named Pipes Provider, error: 0 - No process is on the other end of the pipe.)
+System.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: Named Pipes Provider, error: 0 - No process is on the other end of the pipe.)
+ ---> System.ComponentModel.Win32Exception (233): No process is on the other end of the pipe.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryRowAsync[T](IDbConnection cnn, Row row, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 488
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 25
+   at Kanini.Data.Repositories.Users.UserReadRepository.ExistsByEmailAsync(String email) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserReadRepository.cs:line 24
+   at Kanini.Application.Services.Users.AuthService.RegisterWithOtpAsync(RegisterWithOtpRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\AuthService.cs:line 51
+ClientConnectionId:812f7734-e182-4406-a99a-f599b2c67fc8
+Error Number:233,State:0,Class:20

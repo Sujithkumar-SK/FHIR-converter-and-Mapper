@@ -1,0 +1,154 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10 col-xl-8">
+    <div class="card shadow-lg border-0 auth-card">
+      <div class="card-header text-white text-center py-4">
+        <div class="mb-3">
+          <i class="fas fa-search fa-3x mb-3 text-white"></i>
+        </div>
+        <h2 class="mb-0 fw-bold">
+          <i class="fas fa-user-friends me-2"></i>
+          Patient Search
+        </h2>
+        <p class="mb-0 mt-2 opacity-90 fs-5">Find patient records across hospitals</p>
+        <small class="opacity-75">Search by patient name and date of birth</small>
+      </div>
+      
+      <div class="card-body">
+        <!-- Error Alert -->
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          {{ errorMessage }}
+          <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+        </div>
+
+        <form [formGroup]="searchForm">
+          <!-- Search Term -->
+          <div class="mb-4">
+            <label for="searchTerm" class="form-label">
+              <i class="fas fa-search me-2 text-primary"></i>Search Patient
+            </label>
+            <input
+              type="text"
+              id="searchTerm"
+              formControlName="searchTerm"
+              class="form-control form-control-lg"
+              [class.is-invalid]="isFieldInvalid('searchTerm')"
+              placeholder="Enter patient name or ID">
+            <div *ngIf="isFieldInvalid('searchTerm')" class="invalid-feedback">
+              {{ getFieldError('searchTerm') }}
+            </div>
+            <small class="form-text text-muted">
+              <i class="fas fa-info-circle me-1"></i>
+              Search by patient name, local ID, or any combination
+            </small>
+          </div>
+
+          <!-- Date of Birth (Optional) -->
+          <div class="mb-4">
+            <label for="dateOfBirth" class="form-label">
+              <i class="fas fa-calendar me-2 text-primary"></i>Date of Birth (Optional)
+            </label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              formControlName="dateOfBirth"
+              class="form-control form-control-lg"
+              [class.is-invalid]="isFieldInvalid('dateOfBirth')">
+            <div *ngIf="isFieldInvalid('dateOfBirth')" class="invalid-feedback">
+              {{ getFieldError('dateOfBirth') }}
+            </div>
+            <small class="form-text text-muted">
+              <i class="fas fa-info-circle me-1"></i>
+              Add date of birth to narrow down search results
+            </small>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="row mb-4">
+            <div class="col-md-6 mb-2">
+              <button
+                type="button"
+                class="btn btn-primary btn-lg w-100 py-3"
+                (click)="loadAllPatients()"
+                [disabled]="isLoading">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                <i *ngIf="!isLoading" class="fas fa-sync me-2"></i>
+                {{ isLoading ? 'Loading...' : 'Refresh Patients' }}
+              </button>
+            </div>
+            <div class="col-md-6 mb-2">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg w-100 py-3"
+                (click)="clearSearch()"
+                [disabled]="isLoading">
+                <i class="fas fa-times me-2"></i>
+                Clear Filters
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="border-top pt-4">
+          <h5 class="mb-3">
+            <i class="fas fa-list me-2 text-primary"></i>
+            All Patients ({{ filteredPatients.length }})
+          </h5>
+          
+          <div *ngIf="isLoading" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2 text-muted">Loading patients...</p>
+          </div>
+          
+          <div *ngIf="!isLoading && filteredPatients.length === 0 && hasLoaded" class="text-center py-4">
+            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+            <p class="text-muted mb-0">No patients found</p>
+          </div>
+
+          <div *ngFor="let patient of filteredPatients" class="card mb-3 border-start border-primary border-4">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <h6 class="card-title mb-2">
+                    <i class="fas fa-user-circle me-2 text-primary"></i>
+                    {{ patient.firstName }} {{ patient.lastName }}
+                  </h6>
+                  <p class="card-text mb-1">
+                    <small class="text-muted">
+                      <i class="fas fa-id-card me-1"></i>
+                      Local ID: {{ patient.localPatientId }}
+                    </small>
+                  </p>
+                  <p class="card-text mb-1">
+                    <small class="text-muted">
+                      <i class="fas fa-hospital me-1"></i>
+                      {{ patient.organizationName }}
+                    </small>
+                  </p>
+                  <p class="card-text mb-0">
+                    <small class="text-muted">
+                      <i class="fas fa-calendar me-1"></i>
+                      DOB: {{ patient.dateOfBirth | date:'mediumDate' }}
+                    </small>
+                  </p>
+                </div>
+                <div class="col-md-4 text-end">
+                  <button class="btn btn-outline-primary btn-sm me-2">
+                    <i class="fas fa-eye me-1"></i>
+                    View Details
+                  </button>
+                  <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-share me-1"></i>
+                    Request Data
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

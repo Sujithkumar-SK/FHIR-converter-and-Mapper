@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "kvMsjcGKEIE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\maste\\Documents\\Kanini\\Fhir _PE\\development\\Kanini.Common\\Kanini.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\maste\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.1\\microsoft.extensions.dependencyinjection.abstractions.10.0.1.nupkg.sha512",
+    "C:\\Users\\maste\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.1\\microsoft.extensions.logging.abstractions.10.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

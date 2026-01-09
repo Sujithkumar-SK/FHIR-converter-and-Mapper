@@ -1,0 +1,210 @@
+<div class="request-details-container" *ngIf="!isLoading">
+  <!-- Header -->
+  <div class="details-header">
+    <button class="btn-back" (click)="goBack()">
+      ← Back to Requests
+    </button>
+    <h2>Data Request Details</h2>
+  </div>
+
+  <!-- Request Information -->
+  <div class="request-info-card" *ngIf="request">
+    <div class="card-header">
+      <div class="request-title">
+        <h3>Request #{{ request.requestId.substring(0, 8) }}</h3>
+        <span class="status-badge" [class]="getStatusBadgeClass(request.status)">
+          {{ DataRequestStatusLabels[request.status] }}
+        </span>
+      </div>
+      <div class="request-dates">
+        <div class="date-item">
+          <label>Created:</label>
+          <span>{{ formatDate(request.createdOn) }}</span>
+        </div>
+        <div class="date-item">
+          <label>Expires:</label>
+          <span [class.expired]="isExpired()">{{ formatDate(request.expiresAt) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Patient ID:</label>
+          <span>{{ request.globalPatientId }}</span>
+        </div>
+        <div class="info-item">
+          <label>Requesting Organization:</label>
+          <span>{{ request.requestingOrganizationName }}</span>
+        </div>
+        <div class="info-item">
+          <label>Requesting User:</label>
+          <span>{{ request.requestingUserEmail }}</span>
+        </div>
+        <div class="info-item">
+          <label>Source Organization:</label>
+          <span>{{ request.sourceOrganizationName }}</span>
+        </div>
+      </div>
+
+      <div class="notes-section" *ngIf="request.notes">
+        <label>Request Notes:</label>
+        <div class="notes-content">{{ request.notes }}</div>
+      </div>
+
+      <div class="approval-info" *ngIf="request.approvedAt">
+        <div class="info-item">
+          <label>Approved At:</label>
+          <span>{{ formatDate(request.approvedAt) }}</span>
+        </div>
+        <div class="info-item" *ngIf="request.approvedByUserEmail">
+          <label>Approved By:</label>
+          <span>{{ request.approvedByUserEmail }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Approval Section -->
+  <div class="approval-section" *ngIf="showApprovalSection">
+    <div class="section-header">
+      <h3>⚖️ Approve Data Request</h3>
+      <p>Review and approve this data sharing request to allow file uploads</p>
+    </div>
+    
+    <div class="approval-actions">
+      <button class="btn btn-success" 
+              (click)="approveRequest()" 
+              [disabled]="isSubmitting">
+        <span *ngIf="isSubmitting" class="spinner"></span>
+        ✅ {{ isSubmitting ? 'Approving...' : 'Approve Request' }}
+      </button>
+      
+      <button class="btn btn-danger" 
+              (click)="rejectRequest()" 
+              [disabled]="isSubmitting">
+        <span *ngIf="isSubmitting" class="spinner"></span>
+        ❌ {{ isSubmitting ? 'Rejecting...' : 'Reject Request' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- File Upload Section -->
+  <div class="upload-section" *ngIf="showUploadSection && currentStep === 'upload'">
+    <div class="section-header">
+      <h3>📁 Upload Patient Data</h3>
+      <p>Upload the patient's medical data files for FHIR conversion</p>
+    </div>
+    
+    <app-file-upload 
+      [requestId]="request?.requestId"
+      (fileUploaded)="onFileUploaded($event)">
+    </app-file-upload>
+  </div>
+
+  <!-- Uploaded Files -->
+  <div class="files-section" *ngIf="uploadedFiles.length > 0 && currentStep === 'upload'">
+    <div class="section-header">
+      <h3>📋 Uploaded Files</h3>
+      <p>Select a file to start FHIR conversion</p>
+    </div>
+    
+    <div class="file-list">
+      <div *ngFor="let file of uploadedFiles" class="file-item d-flex justify-content-between align-items-center p-3 mb-2 border rounded">
+        <div class="file-info d-flex align-items-center">
+          <div class="file-icon me-3">📄</div>
+          <div class="file-details">
+            <strong>{{file.originalFileName}}</strong>
+            <small class="text-muted d-block">{{file.fileSizeBytes | number}} bytes • {{file.detectedFormat}}</small>
+          </div>
+        </div>
+        <button 
+          class="btn btn-primary btn-sm"
+          (click)="startConversion(file)">
+          <i class="fas fa-play"></i> Start Conversion
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Field Mapping Step -->
+  <div class="mapping-section" *ngIf="currentStep === 'mapping' && selectedFileForConversion">
+    <div class="section-header">
+      <h3>🔗 Step 2: Map Data Fields</h3>
+      <p>Converting: <strong>{{selectedFileForConversion.originalFileName}}</strong></p>
+    </div>
+    
+    <app-field-mapping 
+      [fileId]="selectedFileForConversion.fileId"
+      (mappingComplete)="onMappingComplete($event)">
+    </app-field-mapping>
+  </div>
+
+  <!-- Conversion Progress Step -->
+  <div class="conversion-section" *ngIf="currentStep === 'converting' && conversionJobId">
+    <div class="section-header">
+      <h3>🔄 Step 3: Converting to FHIR</h3>
+      <p>Processing your data and generating FHIR bundle...</p>
+    </div>
+    
+    <app-conversion-progress 
+      [jobId]="conversionJobId">
+    </app-conversion-progress>
+    
+    <div class="mt-3">
+      <button 
+        class="btn btn-success"
+        (click)="onConversionComplete()">
+        <i class="fas fa-eye"></i> View FHIR Preview
+      </button>
+    </div>
+  </div>
+
+  <!-- FHIR Preview Step -->
+  <div class="preview-section" *ngIf="currentStep === 'preview' && conversionJobId">
+    <div class="section-header">
+      <h3>📜 Step 4: FHIR Bundle Preview</h3>
+      <p>Your data has been successfully converted to FHIR format</p>
+    </div>
+    
+    <app-fhir-preview 
+      [jobId]="conversionJobId">
+    </app-fhir-preview>
+  </div>
+
+  <!-- Status Messages -->
+  <div class="status-messages">
+    <div class="alert alert-warning" *ngIf="isExpired()">
+      ⚠️ This request has expired and no longer accepts file uploads
+    </div>
+    
+    <!-- Messages for Source Organization (User A) -->
+    <div class="alert alert-info" *ngIf="request?.status === DataRequestStatus.Pending && isSourceOrganization()">
+      ℹ️ This request is pending your approval. Please review and approve to allow file uploads.
+    </div>
+    
+    <div class="alert alert-success" *ngIf="request?.status === DataRequestStatus.Approved && isSourceOrganization() && !isExpired()">
+      ✅ Request approved! You can now upload patient data files.
+    </div>
+    
+    <!-- Messages for Requesting Organization (User B) -->
+    <div class="alert alert-info" *ngIf="request?.status === DataRequestStatus.Pending && isRequestingOrganization()">
+      ℹ️ Your request is pending approval from the source organization.
+    </div>
+    
+    <div class="alert alert-success" *ngIf="request?.status === DataRequestStatus.Approved && isRequestingOrganization()">
+      ✅ Your request has been approved! The source organization can now upload patient data.
+    </div>
+    
+    <div class="alert alert-danger" *ngIf="request?.status === DataRequestStatus.Rejected">
+      ❌ This request has been rejected.
+    </div>
+  </div>
+</div>
+
+<!-- Loading State -->
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Loading request details...</p>
+</div>

@@ -1,0 +1,240 @@
+2026-01-06 12:06:56.888 +05:30 [ERR] Failed executing DbCommand (77ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 300), @p2='?' (Size = 200), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Boolean), @p6='?' (Size = 500), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2), @p20='?' (DbType = Guid), @p10='?' (Size = 100), @p11='?' (DbType = DateTime2), @p12='?' (Size = 150), @p13='?' (DbType = Boolean), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Guid), @p16='?' (Size = 256), @p17='?' (DbType = Int32), @p18='?' (Size = 100), @p19='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Organizations] ([OrganizationId], [ContactEmail], [ContactPhone], [CreatedBy], [CreatedOn], [IsActive], [Name], [Type], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+UPDATE [Users] SET [CreatedBy] = @p10, [CreatedOn] = @p11, [Email] = @p12, [IsActive] = @p13, [LastLogin] = @p14, [OrganizationId] = @p15, [PasswordHash] = @p16, [Role] = @p17, [UpdatedBy] = @p18, [UpdatedOn] = @p19
+OUTPUT 1
+WHERE [UserId] = @p20;
+2026-01-06 12:06:57.102 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'Kanini.Data.DatabaseContext.FhirConverterDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'ContactEmail', table 'FhirConverterDb.dbo.Organizations'; column does not allow nulls. INSERT fails.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Users_Organizations_OrganizationId". The conflict occurred in database "FhirConverterDb", table "dbo.Organizations", column 'OrganizationId'.
+The statement has been terminated.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:341d4fbe-9d63-4480-a32c-d47c1c119979
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'ContactEmail', table 'FhirConverterDb.dbo.Organizations'; column does not allow nulls. INSERT fails.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Users_Organizations_OrganizationId". The conflict occurred in database "FhirConverterDb", table "dbo.Organizations", column 'OrganizationId'.
+The statement has been terminated.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:341d4fbe-9d63-4480-a32c-d47c1c119979
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-01-06 12:06:57.217 +05:30 [ERR] Error updating user with ID "f90274ac-51c7-4ee6-a823-08de4ce8fccc"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'ContactEmail', table 'FhirConverterDb.dbo.Organizations'; column does not allow nulls. INSERT fails.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Users_Organizations_OrganizationId". The conflict occurred in database "FhirConverterDb", table "dbo.Organizations", column 'OrganizationId'.
+The statement has been terminated.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:341d4fbe-9d63-4480-a32c-d47c1c119979
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Kanini.Data.Repositories.Users.UserRepository.UpdateAsync(User user) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserRepository.cs:line 55
+2026-01-06 12:06:57.316 +05:30 [ERR] Login failed for email: sujithkumarsenthilkumar777@gmail.com, Error: An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'ContactEmail', table 'FhirConverterDb.dbo.Organizations'; column does not allow nulls. INSERT fails.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Users_Organizations_OrganizationId". The conflict occurred in database "FhirConverterDb", table "dbo.Organizations", column 'OrganizationId'.
+The statement has been terminated.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:341d4fbe-9d63-4480-a32c-d47c1c119979
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Kanini.Data.Repositories.Users.UserRepository.UpdateAsync(User user) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserRepository.cs:line 55
+   at Kanini.Application.Services.Users.AuthService.LoginAsync(LoginRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\AuthService.cs:line 210
+2026-01-06 17:16:10.517 +05:30 [ERR] Error getting data requests
+System.FormatException: Unrecognized Guid format.
+   at System.Guid.GuidResult.SetFailure(ParseFailure failureKind)
+   at System.Guid.TryParseGuid[TChar](ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid.Parse(ReadOnlySpan`1 input)
+   at System.Guid.Parse(String input)
+   at Kanini.Api.Controllers.DataRequestsController.GetRequests(Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\Controllers\DataRequestsController.cs:line 59
+2026-01-06 17:18:07.459 +05:30 [ERR] Error getting data requests
+System.FormatException: Unrecognized Guid format.
+   at System.Guid.GuidResult.SetFailure(ParseFailure failureKind)
+   at System.Guid.TryParseGuid[TChar](ReadOnlySpan`1 guidString, GuidResult& result)
+   at System.Guid.Parse(ReadOnlySpan`1 input)
+   at System.Guid.Parse(String input)
+   at Kanini.Api.Controllers.DataRequestsController.GetRequests(Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\Controllers\DataRequestsController.cs:line 59
+2026-01-06 17:19:01.911 +05:30 [ERR] Error executing stored procedure: sp_GetDataRequestsByOrganization
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'sp_GetDataRequestsByOrganization'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 66
+ClientConnectionId:a7b5a4fb-fa89-42d6-b0ca-f6664b79b918
+Error Number:2812,State:62,Class:16
+2026-01-06 17:19:02.001 +05:30 [ERR] Error getting data requests for organization "f6132a69-6a7a-415e-80ca-60fa43ddbef7"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'sp_GetDataRequestsByOrganization'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 66
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 23
+ClientConnectionId:a7b5a4fb-fa89-42d6-b0ca-f6664b79b918
+Error Number:2812,State:62,Class:16
+2026-01-06 17:19:02.017 +05:30 [ERR] Error getting data requests for organization "f6132a69-6a7a-415e-80ca-60fa43ddbef7"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'sp_GetDataRequestsByOrganization'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 66
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 23
+   at Kanini.Application.Services.DataRequests.DataRequestService.GetRequestsByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\DataRequests\DataRequestService.cs:line 79
+ClientConnectionId:a7b5a4fb-fa89-42d6-b0ca-f6664b79b918
+Error Number:2812,State:62,Class:16
+2026-01-06 17:34:55.352 +05:30 [ERR] Error executing stored procedure: sp_GetPatientsByGlobalIdAllSources
+System.IndexOutOfRangeException: OrganizationName
+   at Microsoft.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   at Microsoft.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.DataReaderExtensions.IsDBNull(DbDataReader reader, String name)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 151
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 70
+2026-01-06 17:34:55.401 +05:30 [ERR] Error getting all sources for patient "b2faadec-73ee-45a9-90fa-fffbf125ec50"
+System.IndexOutOfRangeException: OrganizationName
+   at Microsoft.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   at Microsoft.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.DataReaderExtensions.IsDBNull(DbDataReader reader, String name)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 151
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 70
+   at Kanini.Data.Repositories.Patients.PatientReadRepository.GetByGlobalIdAllSourcesAsync(Guid globalPatientId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Patients\PatientReadRepository.cs:line 64
+2026-01-06 17:34:55.411 +05:30 [ERR] Error getting patient sources for "b2faadec-73ee-45a9-90fa-fffbf125ec50"
+System.IndexOutOfRangeException: OrganizationName
+   at Microsoft.Data.ProviderBase.FieldNameLookup.GetOrdinal(String fieldName)
+   at Microsoft.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.DataReaderExtensions.IsDBNull(DbDataReader reader, String name)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 151
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 70
+   at Kanini.Data.Repositories.Patients.PatientReadRepository.GetByGlobalIdAllSourcesAsync(Guid globalPatientId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Patients\PatientReadRepository.cs:line 64
+   at Kanini.Application.Services.Patients.PatientService.GetPatientSourcesAsync(Guid globalPatientId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Patients\PatientService.cs:line 161
+2026-01-06 17:54:10.967 +05:30 [ERR] Error executing stored procedure: sp_GetDataRequestById
+System.InvalidCastException: Object must implement IConvertible.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 40
+2026-01-06 17:54:10.997 +05:30 [ERR] Error getting data request "ff272a1c-10e0-4693-bc02-8510f8a35045"
+System.InvalidCastException: Object must implement IConvertible.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 40
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByIdAsync(Guid requestId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 39
+2026-01-06 17:54:11.001 +05:30 [ERR] Data request creation failed for GlobalPatientId: "b2faadec-73ee-45a9-90fa-fffbf125ec50", Error: Object must implement IConvertible.
+System.InvalidCastException: Object must implement IConvertible.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 40
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByIdAsync(Guid requestId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 39
+   at Kanini.Application.Services.DataRequests.DataRequestService.CreateRequestAsync(CreateDataRequestDto request, Guid requestingUserId, Guid requestingOrganizationId, String createdBy) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\DataRequests\DataRequestService.cs:line 63

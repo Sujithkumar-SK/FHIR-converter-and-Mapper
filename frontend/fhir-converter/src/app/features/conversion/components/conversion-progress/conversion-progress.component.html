@@ -1,0 +1,105 @@
+<div class="conversion-progress-container">
+  <div class="progress-header">
+    <h4>🔄 FHIR Conversion Progress</h4>
+  </div>
+
+  <div *ngIf="conversionStatus" class="progress-content">
+    <!-- Status Badge -->
+    <div class="status-section mb-4">
+      <div class="d-flex align-items-center">
+        <i [class]="getStatusIcon() + ' ' + getStatusColor() + ' me-2'" style="font-size: 1.5rem;"></i>
+        <div>
+          <h5 class="mb-0" [class]="getStatusColor()">
+            {{ConversionStatusLabels[conversionStatus.status]}}
+          </h5>
+          <small class="text-muted">Job ID: {{conversionStatus.jobId.substring(0, 8)}}...</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-section mb-4">
+      <div class="d-flex justify-content-between mb-2">
+        <span>Progress</span>
+        <span><strong>{{conversionStatus.progress}}%</strong></span>
+      </div>
+      <div class="progress" style="height: 20px;">
+        <div 
+          class="progress-bar" 
+          [class]="getProgressBarClass()"
+          role="progressbar" 
+          [style.width.%]="conversionStatus.progress"
+          [attr.aria-valuenow]="conversionStatus.progress"
+          aria-valuemin="0" 
+          aria-valuemax="100">
+        </div>
+      </div>
+    </div>
+
+    <!-- Processing Stats -->
+    <div class="stats-section">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value">{{conversionStatus.patientsProcessed}}</div>
+            <div class="stat-label">Patients</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value">{{conversionStatus.observationsProcessed}}</div>
+            <div class="stat-label">Observations</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-value">{{formatProcessingTime(conversionStatus.processingTimeMs)}}</div>
+            <div class="stat-label">Processing Time</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value">{{conversionStatus.completedAt ? (conversionStatus.completedAt | date:'short') : 'In Progress'}}</div>
+            <div class="stat-label">Completed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="conversionStatus.errorMessage" class="alert alert-danger mt-4">
+      <h6><i class="fas fa-exclamation-triangle"></i> Conversion Error</h6>
+      <p class="mb-0">{{conversionStatus.errorMessage}}</p>
+    </div>
+
+    <!-- Processing Messages -->
+    <div *ngIf="conversionStatus.status === 'Processing'" class="alert alert-info mt-4">
+      <div class="d-flex align-items-center">
+        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+        <div>
+          <strong>Converting your data to FHIR format...</strong>
+          <br>
+          <small>This process may take a few minutes depending on file size.</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Completion Message -->
+    <div *ngIf="conversionStatus.status === 'Completed'" class="alert alert-success mt-4">
+      <h6><i class="fas fa-check-circle"></i> Conversion Completed Successfully!</h6>
+      <p class="mb-0">Your data has been converted to FHIR format. You can now preview and download the bundle.</p>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="!conversionStatus" class="text-center py-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading conversion status...</span>
+    </div>
+    <p class="mt-2">Loading conversion status...</p>
+  </div>
+</div>

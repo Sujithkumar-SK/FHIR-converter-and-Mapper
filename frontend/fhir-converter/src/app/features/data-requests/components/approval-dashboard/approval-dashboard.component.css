@@ -1,0 +1,23 @@
+.modal-lg {
+  max-width: 800px;
+}
+
+.form-check-label {
+  font-weight: 500;
+}
+
+.form-check-label.text-success {
+  color: #198754 !important;
+}
+
+.form-check-label.text-danger {
+  color: #dc3545 !important;
+}
+
+.table-warning {
+  --bs-table-bg: #fff3cd;
+}
+
+.fa-3x {
+  font-size: 3em;
+}

@@ -1,0 +1,132 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>📋 Data Requests</h2>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary btn-sm" (click)="loadRequests()">
+        <i class="fas fa-sync-alt"></i> Refresh
+      </button>
+      <button class="btn btn-primary" (click)="createNewRequest()">
+        <i class="fas fa-plus me-2"></i>New Request
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <button 
+        class="nav-link" 
+        [class.active]="activeTab === 'sent'"
+        (click)="setActiveTab('sent')">
+        📤 Sent Requests
+      </button>
+    </li>
+    <li class="nav-item">
+      <button 
+        class="nav-link" 
+        [class.active]="activeTab === 'received'"
+        (click)="setActiveTab('received')">
+        📥 Received Requests
+      </button>
+    </li>
+  </ul>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Requests Table -->
+  <div *ngIf="!isLoading" class="card">
+    <div class="card-body">
+      <div *ngIf="requests.length === 0" class="text-center py-4 text-muted">
+        <i class="fas fa-inbox fa-3x mb-3"></i>
+        <p>No {{activeTab === 'sent' ? 'sent' : 'received'}} requests found</p>
+      </div>
+
+      <div *ngIf="requests.length > 0" class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>👤 Patient</th>
+              <th *ngIf="activeTab === 'sent'">🏥 To Organization</th>
+              <th *ngIf="activeTab === 'received'">🏥 From Organization</th>
+              <th>📊 Status</th>
+              <th>📅 Created</th>
+              <th>⏰ Expires</th>
+              <th>🔧 Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of requests" [class.table-warning]="isExpired(request.expiresAt)">
+              <td>
+                <div class="fw-bold">{{request.globalPatientId | slice:0:8}}...</div>
+              </td>
+              <td *ngIf="activeTab === 'sent'">
+                {{request.sourceOrganizationName}}
+              </td>
+              <td *ngIf="activeTab === 'received'">
+                {{request.requestingOrganizationName}}
+              </td>
+              <td>
+                <span [class]="getStatusBadgeClass(request.status)">
+                  {{getStatusIcon(request.status)}} {{DataRequestStatusLabels[request.status]}}
+                </span>
+                <small *ngIf="isExpired(request.expiresAt)" class="text-danger d-block">
+                  <i class="fas fa-exclamation-triangle"></i> Expired
+                </small>
+                <div *ngIf="request.status === DataRequestStatus.Approved" class="mt-1">
+                  <small class="text-success">
+                    <i class="fas fa-upload"></i> Ready for data upload
+                  </small>
+                </div>
+                <div *ngIf="request.status === DataRequestStatus.DataReady" class="mt-1">
+                  <small class="text-primary">
+                    <i class="fas fa-download"></i> Data ready for download
+                  </small>
+                </div>
+                <div *ngIf="request.status === DataRequestStatus.Completed" class="mt-1">
+                  <small class="text-info">
+                    <i class="fas fa-check-circle"></i> Data downloaded
+                  </small>
+                </div>
+              </td>
+              <td>
+                <small>{{request.createdOn | date:'short'}}</small>
+              </td>
+              <td>
+                <small [class.text-danger]="isExpired(request.expiresAt)">
+                  {{request.expiresAt | date:'short'}}
+                </small>
+              </td>
+              <td>
+                <div class="d-flex gap-2">
+                  <button 
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="viewRequest(request.requestId)">
+                    <i class="fas fa-eye"></i> View
+                  </button>
+                  <button 
+                    *ngIf="canDownload(request)"
+                    class="btn btn-sm btn-success"
+                    (click)="downloadData(request)">
+                    <i class="fas fa-download"></i> Download
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto-refresh indicator -->
+  <div class="mt-3 text-center">
+    <small class="text-muted">
+      <i class="fas fa-sync-alt fa-spin"></i> Auto-refreshing every 30 seconds
+    </small>
+  </div>
+</div>

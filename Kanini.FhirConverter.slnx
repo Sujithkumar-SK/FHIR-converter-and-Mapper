@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Kanini.Api/Kanini.Api.csproj" />
+  <Project Path="Kanini.Application/Kanini.Application.csproj" />
+  <Project Path="Kanini.Common/Kanini.Common.csproj" />
+  <Project Path="Kanini.Data/Kanini.Data.csproj" />
+  <Project Path="Kanini.Domain/Kanini.Domain.csproj" />
+  <Project Path="Kanini.Tests/Kanini.Tests.csproj" />
+</Solution>

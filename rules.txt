@@ -1,0 +1,10 @@
+1)Should handle all possible exceptions using try-catch
+2)Should use ADO.Net for all the read operations while use EF Core for other operations
+3)Use Magic String Concept
+4)If the code use ADO.Net should follow stored procedures
+6)use auto mappers as separate file
+8)Backend API should has all required validations which resembles real time
+9)Recently adding record should be top while fetching rather than at down
+10)Add loggers it should be saved in separate file
+11)dont use dto in repository
+12)keep the entited fixed

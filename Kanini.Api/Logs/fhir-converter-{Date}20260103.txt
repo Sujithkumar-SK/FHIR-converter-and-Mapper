@@ -1,0 +1,660 @@
+2026-01-03 21:39:58 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-03 21:39:58 [INF] Creating key {2c369e0d-b2e8-4f85-8b36-924c84f93572} with creation date 2026-01-03 16:09:58Z, activation date 2026-01-03 16:09:58Z, and expiration date 2026-04-03 16:09:58Z.
+2026-01-03 21:39:58 [INF] Writing data to file 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys\key-2c369e0d-b2e8-4f85-8b36-924c84f93572.xml'.
+2026-01-03 21:39:58 [INF] Now listening on: http://localhost:5201
+2026-01-03 21:39:58 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-03 21:39:58 [INF] Hosting environment: Development
+2026-01-03 21:39:58 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-03 21:41:09 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - null null
+2026-01-03 21:41:09 [WRN] Failed to determine the https port for redirect.
+2026-01-03 21:41:09 [INF] CORS policy execution successful.
+2026-01-03 21:41:09 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - 204 null null 130.6872ms
+2026-01-03 21:41:09 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - application/json 139
+2026-01-03 21:41:09 [INF] CORS policy execution successful.
+2026-01-03 21:41:12 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 21:41:12 [INF] Route matched with {action = "RegisterWithOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterWithOtp(Kanini.Application.DTOs.Auth.RegisterWithOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 21:41:13 [INF] Registration OTP process started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:41:19 [INF] Email sent successfully to: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:41:19 [INF] Registration OTP sent successfully for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:41:19 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.OtpResponseDto'.
+2026-01-03 21:41:19 [INF] Executed action Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api) in 7217.4146ms
+2026-01-03 21:41:19 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 21:41:19 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - 200 null application/json; charset=utf-8 10035.9598ms
+2026-01-03 21:42:40 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - null null
+2026-01-03 21:42:40 [INF] CORS policy execution successful.
+2026-01-03 21:42:40 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - 204 null null 12.7309ms
+2026-01-03 21:42:40 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - application/json 358
+2026-01-03 21:42:40 [INF] CORS policy execution successful.
+2026-01-03 21:42:40 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 21:42:40 [INF] Route matched with {action = "VerifyRegistrationOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] VerifyRegistrationOtp(Kanini.Application.DTOs.Auth.VerifyRegistrationOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 21:42:40 [INF] Registration verification started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:42:42 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 50), @p1='?' (Size = 300), @p2='?' (Size = 200), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Boolean), @p6='?' (Size = 500), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Organizations] ([OrganizationId], [ContactEmail], [ContactPhone], [CreatedBy], [CreatedOn], [IsActive], [Name], [Type], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2026-01-03 21:42:42 [INF] Executed DbCommand (11ms) [Parameters=[@p4='?' (Size = 50), @p0='?' (Size = 300), @p1='?' (Size = 200), @p2='?' (Size = 100), @p3='?' (Size = 500), @p5='?' (Size = 100), @p6='?' (DbType = DateTime2), @p7='?' (Size = 150), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime2), @p10='?' (Size = 50), @p11='?' (Size = 200), @p12='?' (Size = 256), @p13='?' (DbType = Int32), @p14='?' (Size = 100), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Organizations] SET [ContactEmail] = @p0, [ContactPhone] = @p1, [CreatedBy] = @p2, [Name] = @p3
+OUTPUT 1
+WHERE [OrganizationId] = @p4;
+INSERT INTO [Users] ([CreatedBy], [CreatedOn], [Email], [IsActive], [LastLogin], [OrganizationId], [OrganizationName], [PasswordHash], [Role], [UpdatedBy], [UpdatedOn])
+OUTPUT INSERTED.[UserId]
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-01-03 21:42:42 [INF] Registration verification completed for email: sujithkumarsenthilkumar777@gmail.com, UserId: 4
+2026-01-03 21:42:42 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.RegistrationResponseDto'.
+2026-01-03 21:42:42 [INF] Executed action Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api) in 2530.9616ms
+2026-01-03 21:42:42 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 21:42:42 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - 200 null application/json; charset=utf-8 2602.4703ms
+2026-01-03 21:43:35 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 21:43:35 [INF] CORS policy execution successful.
+2026-01-03 21:43:35 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 11.6636ms
+2026-01-03 21:43:35 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-03 21:43:35 [INF] CORS policy execution successful.
+2026-01-03 21:43:35 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 21:43:35 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 21:43:35 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:43:35 [INF] Executed DbCommand (14ms) [Parameters=[@p11='?' (DbType = Int32), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 50), @p6='?' (Size = 200), @p7='?' (Size = 256), @p8='?' (DbType = Int32), @p9='?' (Size = 100), @p10='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [OrganizationName] = @p6, [PasswordHash] = @p7, [Role] = @p8, [UpdatedBy] = @p9, [UpdatedOn] = @p10
+OUTPUT 1
+WHERE [UserId] = @p11;
+2026-01-03 21:43:35 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: 4
+2026-01-03 21:43:36 [ERR] Error in Login for email: sujithkumarsenthilkumar777@gmail.com
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.ArgumentNullException.ThrowIfNull(Object argument, String paramName)
+   at System.Security.Claims.Claim..ctor(String type, String value, String valueType, String issuer, String originalIssuer, ClaimsIdentity subject, String propertyKey, String propertyValue)
+   at System.Security.Claims.Claim..ctor(String type, String value)
+   at Kanini.Application.Services.Users.JwtService.GenerateToken(User user) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\JwtService.cs:line 30
+   at Kanini.Api.Controllers.AuthController.Login(LoginRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\Controllers\AuthController.cs:line 134
+2026-01-03 21:43:36 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-03 21:43:36 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 383.8293ms
+2026-01-03 21:43:36 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 21:43:36 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 500 null application/json; charset=utf-8 450.1137ms
+2026-01-03 21:45:11 [INF] Application is shutting down...
+2026-01-03 21:49:29 [INF] Executed DbCommand (127ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [FhirConverterDb];
+2026-01-03 21:49:29 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [FhirConverterDb] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2026-01-03 21:49:29 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-01-03 21:49:29 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-01-03 21:49:29 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-01-03 21:49:29 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-01-03 21:49:29 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-01-03 21:49:29 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-01-03 21:49:29 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-01-03 21:49:29 [INF] Applying migration '20260103161814_InitialCreate'.
+2026-01-03 21:49:29 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Organizations] (
+    [OrganizationId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(500) NOT NULL,
+    [Type] int NOT NULL,
+    [ContactEmail] nvarchar(300) NOT NULL,
+    [ContactPhone] nvarchar(200) NULL,
+    [IsActive] bit NOT NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Organizations] PRIMARY KEY ([OrganizationId])
+);
+2026-01-03 21:49:29 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [PatientIdentifiers] (
+    [Id] uniqueidentifier NOT NULL,
+    [GlobalPatientId] uniqueidentifier NOT NULL,
+    [SourceOrganizationId] uniqueidentifier NOT NULL,
+    [LocalPatientId] nvarchar(200) NOT NULL,
+    [NationalId] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [DateOfBirth] datetime2 NULL,
+    [NationalIdHash] nvarchar(64) NULL,
+    [LastNameHash] nvarchar(64) NULL,
+    [FirstNameHash] nvarchar(64) NULL,
+    [DateOfBirthHash] nvarchar(64) NULL,
+    [ExpiresAt] datetime2 NOT NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_PatientIdentifiers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PatientIdentifiers_Organizations_SourceOrganizationId] FOREIGN KEY ([SourceOrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION
+);
+2026-01-03 21:49:29 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserId] uniqueidentifier NOT NULL,
+    [Email] nvarchar(150) NOT NULL,
+    [PasswordHash] nvarchar(256) NOT NULL,
+    [Role] int NOT NULL,
+    [OrganizationName] nvarchar(200) NOT NULL,
+    [OrganizationId] uniqueidentifier NOT NULL,
+    [IsActive] bit NOT NULL,
+    [LastLogin] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_Users_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION
+);
+2026-01-03 21:49:29 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [DataRequests] (
+    [RequestId] uniqueidentifier NOT NULL,
+    [GlobalPatientId] uniqueidentifier NOT NULL,
+    [RequestingUserId] uniqueidentifier NOT NULL,
+    [RequestingOrganizationId] uniqueidentifier NOT NULL,
+    [SourceOrganizationId] uniqueidentifier NOT NULL,
+    [Status] int NOT NULL,
+    [Notes] nvarchar(1000) NULL,
+    [ApprovedAt] datetime2 NULL,
+    [ApprovedByUserId] uniqueidentifier NULL,
+    [ExpiresAt] datetime2 NOT NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_DataRequests] PRIMARY KEY ([RequestId]),
+    CONSTRAINT [FK_DataRequests_Organizations_RequestingOrganizationId] FOREIGN KEY ([RequestingOrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_DataRequests_Organizations_SourceOrganizationId] FOREIGN KEY ([SourceOrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_DataRequests_Users_ApprovedByUserId] FOREIGN KEY ([ApprovedByUserId]) REFERENCES [Users] ([UserId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_DataRequests_Users_RequestingUserId] FOREIGN KEY ([RequestingUserId]) REFERENCES [Users] ([UserId]) ON DELETE NO ACTION
+);
+2026-01-03 21:49:29 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ConversionJobs] (
+    [JobId] uniqueidentifier NOT NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    [RequestId] uniqueidentifier NULL,
+    [InputFormat] int NOT NULL,
+    [Status] int NOT NULL,
+    [ErrorMessage] nvarchar(2000) NULL,
+    [PatientsCount] int NOT NULL,
+    [ObservationsCount] int NOT NULL,
+    [CompletedAt] datetime2 NULL,
+    [OriginalFileName] nvarchar(200) NULL,
+    [FileSizeBytes] bigint NULL,
+    [ProcessingTimeMs] bigint NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_ConversionJobs] PRIMARY KEY ([JobId]),
+    CONSTRAINT [FK_ConversionJobs_DataRequests_RequestId] FOREIGN KEY ([RequestId]) REFERENCES [DataRequests] ([RequestId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ConversionJobs_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE NO ACTION
+);
+2026-01-03 21:49:29 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ConversionJobs_RequestId] ON [ConversionJobs] ([RequestId]);
+2026-01-03 21:49:29 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ConversionJobs_UserId] ON [ConversionJobs] ([UserId]);
+2026-01-03 21:49:29 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_ApprovedByUserId] ON [DataRequests] ([ApprovedByUserId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_RequestingOrganizationId] ON [DataRequests] ([RequestingOrganizationId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_RequestingUserId] ON [DataRequests] ([RequestingUserId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_SourceOrganizationId] ON [DataRequests] ([SourceOrganizationId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Organizations_OrganizationId] ON [Organizations] ([OrganizationId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_PatientIdentifiers_GlobalPatientId_SourceOrganizationId] ON [PatientIdentifiers] ([GlobalPatientId], [SourceOrganizationId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_PatientIdentifiers_LastNameHash_DateOfBirthHash] ON [PatientIdentifiers] ([LastNameHash], [DateOfBirthHash]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_PatientIdentifiers_NationalIdHash] ON [PatientIdentifiers] ([NationalIdHash]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_PatientIdentifiers_SourceOrganizationId] ON [PatientIdentifiers] ([SourceOrganizationId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_OrganizationId] ON [Users] ([OrganizationId]);
+2026-01-03 21:49:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260103161814_InitialCreate', N'10.0.1');
+2026-01-03 21:49:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-01-03 21:52:02 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-03 21:52:02 [INF] Now listening on: http://localhost:5201
+2026-01-03 21:52:02 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-03 21:52:02 [INF] Hosting environment: Development
+2026-01-03 21:52:02 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-03 21:52:26 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - null null
+2026-01-03 21:52:26 [WRN] Failed to determine the https port for redirect.
+2026-01-03 21:52:26 [INF] CORS policy execution successful.
+2026-01-03 21:52:27 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - 204 null null 128.4036ms
+2026-01-03 21:52:27 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - application/json 139
+2026-01-03 21:52:27 [INF] CORS policy execution successful.
+2026-01-03 21:52:27 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 21:52:27 [INF] Route matched with {action = "RegisterWithOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterWithOtp(Kanini.Application.DTOs.Auth.RegisterWithOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 21:52:27 [INF] Registration OTP process started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:52:33 [INF] Email sent successfully to: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:52:33 [INF] Registration OTP sent successfully for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:52:33 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.OtpResponseDto'.
+2026-01-03 21:52:33 [INF] Executed action Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api) in 5962.3166ms
+2026-01-03 21:52:33 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 21:52:33 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - 200 null application/json; charset=utf-8 6098.991ms
+2026-01-03 21:52:45 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - null null
+2026-01-03 21:52:45 [INF] CORS policy execution successful.
+2026-01-03 21:52:45 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - 204 null null 9.7065ms
+2026-01-03 21:52:45 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - application/json 358
+2026-01-03 21:52:45 [INF] CORS policy execution successful.
+2026-01-03 21:52:45 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 21:52:45 [INF] Route matched with {action = "VerifyRegistrationOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] VerifyRegistrationOtp(Kanini.Application.DTOs.Auth.VerifyRegistrationOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 21:52:45 [INF] Registration verification started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:52:47 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 300), @p2='?' (Size = 200), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Boolean), @p6='?' (Size = 500), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Organizations] ([OrganizationId], [ContactEmail], [ContactPhone], [CreatedBy], [CreatedOn], [IsActive], [Name], [Type], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2026-01-03 21:52:47 [INF] Executed DbCommand (20ms) [Parameters=[@p4='?' (DbType = Guid), @p0='?' (Size = 300), @p1='?' (Size = 200), @p2='?' (Size = 100), @p3='?' (Size = 500), @p5='?' (DbType = Guid), @p6='?' (Size = 100), @p7='?' (DbType = DateTime2), @p8='?' (Size = 150), @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p12='?' (Size = 200), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (Size = 100), @p16='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Organizations] SET [ContactEmail] = @p0, [ContactPhone] = @p1, [CreatedBy] = @p2, [Name] = @p3
+OUTPUT 1
+WHERE [OrganizationId] = @p4;
+INSERT INTO [Users] ([UserId], [CreatedBy], [CreatedOn], [Email], [IsActive], [LastLogin], [OrganizationId], [OrganizationName], [PasswordHash], [Role], [UpdatedBy], [UpdatedOn])
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16);
+2026-01-03 21:52:47 [INF] Registration verification completed for email: sujithkumarsenthilkumar777@gmail.com, UserId: "a0fe12d3-61ca-4a35-b739-08de4ae454f5"
+2026-01-03 21:52:47 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.RegistrationResponseDto'.
+2026-01-03 21:52:47 [INF] Executed action Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api) in 2279.6949ms
+2026-01-03 21:52:47 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 21:52:47 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - 200 null application/json; charset=utf-8 2352.6178ms
+2026-01-03 21:53:17 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 21:53:17 [INF] CORS policy execution successful.
+2026-01-03 21:53:17 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 6.6792ms
+2026-01-03 21:53:17 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-03 21:53:17 [INF] CORS policy execution successful.
+2026-01-03 21:53:17 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 21:53:17 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 21:53:17 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 21:53:17 [INF] Executed DbCommand (13ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 200), @p7='?' (Size = 256), @p8='?' (DbType = Int32), @p9='?' (Size = 100), @p10='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [OrganizationName] = @p6, [PasswordHash] = @p7, [Role] = @p8, [UpdatedBy] = @p9, [UpdatedOn] = @p10
+OUTPUT 1
+WHERE [UserId] = @p11;
+2026-01-03 21:53:18 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: "a0fe12d3-61ca-4a35-b739-08de4ae454f5"
+2026-01-03 21:53:18 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-03 21:53:18 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 478.0051ms
+2026-01-03 21:53:18 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 21:53:18 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 518.3552ms
+2026-01-03 21:53:18 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/test/profile - null null
+2026-01-03 21:53:18 [INF] CORS policy execution successful.
+2026-01-03 21:53:18 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/test/profile - 404 0 null 103.6815ms
+2026-01-03 21:53:18 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5201/api/test/profile, Response status code: 404
+2026-01-03 21:54:59 [INF] Application is shutting down...
+2026-01-03 22:12:05 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-03 22:12:06 [INF] Now listening on: http://localhost:5201
+2026-01-03 22:12:06 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-03 22:12:06 [INF] Hosting environment: Development
+2026-01-03 22:12:06 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-03 22:12:20 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 22:12:20 [WRN] Failed to determine the https port for redirect.
+2026-01-03 22:12:20 [INF] CORS policy execution successful.
+2026-01-03 22:12:20 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 215.0892ms
+2026-01-03 22:12:20 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 74
+2026-01-03 22:12:21 [INF] CORS policy execution successful.
+2026-01-03 22:12:21 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:12:21 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:12:22 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:12:23 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-03 22:12:23 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 2072.7604ms
+2026-01-03 22:12:23 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:12:23 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 400 null application/json; charset=utf-8 2451.5442ms
+2026-01-03 22:12:47 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 22:12:47 [INF] CORS policy execution successful.
+2026-01-03 22:12:47 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 7.8217ms
+2026-01-03 22:12:47 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-03 22:12:47 [INF] CORS policy execution successful.
+2026-01-03 22:12:47 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:12:47 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:12:47 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:12:49 [INF] Executed DbCommand (21ms) [Parameters=[@p11='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 200), @p7='?' (Size = 256), @p8='?' (DbType = Int32), @p9='?' (Size = 100), @p10='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [OrganizationName] = @p6, [PasswordHash] = @p7, [Role] = @p8, [UpdatedBy] = @p9, [UpdatedOn] = @p10
+OUTPUT 1
+WHERE [UserId] = @p11;
+2026-01-03 22:12:49 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: "a0fe12d3-61ca-4a35-b739-08de4ae454f5"
+2026-01-03 22:12:49 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-03 22:12:49 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 2252.2474ms
+2026-01-03 22:12:49 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:12:49 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 2303.4344ms
+2026-01-03 22:22:32 [INF] Application is shutting down...
+2026-01-03 22:23:51 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-03 22:23:51 [INF] Now listening on: http://localhost:5201
+2026-01-03 22:23:51 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-03 22:23:51 [INF] Hosting environment: Development
+2026-01-03 22:23:51 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-03 22:24:02 [INF] Application is shutting down...
+2026-01-03 22:24:45 [INF] Executed DbCommand (175ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [FhirConverterDb];
+2026-01-03 22:24:46 [INF] Executed DbCommand (80ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [FhirConverterDb] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2026-01-03 22:24:46 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-01-03 22:24:46 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-01-03 22:24:46 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-01-03 22:24:46 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-01-03 22:24:46 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-01-03 22:24:46 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-01-03 22:24:46 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-01-03 22:24:46 [INF] Applying migration '20260103165418_InitialCreate'.
+2026-01-03 22:24:46 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Organizations] (
+    [OrganizationId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(500) NOT NULL,
+    [Type] int NOT NULL,
+    [ContactEmail] nvarchar(300) NOT NULL,
+    [ContactPhone] nvarchar(200) NULL,
+    [IsActive] bit NOT NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Organizations] PRIMARY KEY ([OrganizationId])
+);
+2026-01-03 22:24:46 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [PatientIdentifiers] (
+    [Id] uniqueidentifier NOT NULL,
+    [GlobalPatientId] uniqueidentifier NOT NULL,
+    [SourceOrganizationId] uniqueidentifier NOT NULL,
+    [LocalPatientId] nvarchar(200) NOT NULL,
+    [NationalId] nvarchar(200) NULL,
+    [LastName] nvarchar(200) NULL,
+    [FirstName] nvarchar(200) NULL,
+    [DateOfBirth] datetime2 NULL,
+    [NationalIdHash] nvarchar(64) NULL,
+    [LastNameHash] nvarchar(64) NULL,
+    [FirstNameHash] nvarchar(64) NULL,
+    [DateOfBirthHash] nvarchar(64) NULL,
+    [ExpiresAt] datetime2 NOT NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_PatientIdentifiers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_PatientIdentifiers_Organizations_SourceOrganizationId] FOREIGN KEY ([SourceOrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION
+);
+2026-01-03 22:24:46 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Users] (
+    [UserId] uniqueidentifier NOT NULL,
+    [Email] nvarchar(150) NOT NULL,
+    [PasswordHash] nvarchar(256) NOT NULL,
+    [Role] int NOT NULL,
+    [OrganizationId] uniqueidentifier NULL,
+    [IsActive] bit NOT NULL,
+    [LastLogin] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([UserId]),
+    CONSTRAINT [FK_Users_Organizations_OrganizationId] FOREIGN KEY ([OrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION
+);
+2026-01-03 22:24:46 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [DataRequests] (
+    [RequestId] uniqueidentifier NOT NULL,
+    [GlobalPatientId] uniqueidentifier NOT NULL,
+    [RequestingUserId] uniqueidentifier NOT NULL,
+    [RequestingOrganizationId] uniqueidentifier NOT NULL,
+    [SourceOrganizationId] uniqueidentifier NOT NULL,
+    [Status] int NOT NULL,
+    [Notes] nvarchar(1000) NULL,
+    [ApprovedAt] datetime2 NULL,
+    [ApprovedByUserId] uniqueidentifier NULL,
+    [ExpiresAt] datetime2 NOT NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_DataRequests] PRIMARY KEY ([RequestId]),
+    CONSTRAINT [FK_DataRequests_Organizations_RequestingOrganizationId] FOREIGN KEY ([RequestingOrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_DataRequests_Organizations_SourceOrganizationId] FOREIGN KEY ([SourceOrganizationId]) REFERENCES [Organizations] ([OrganizationId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_DataRequests_Users_ApprovedByUserId] FOREIGN KEY ([ApprovedByUserId]) REFERENCES [Users] ([UserId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_DataRequests_Users_RequestingUserId] FOREIGN KEY ([RequestingUserId]) REFERENCES [Users] ([UserId]) ON DELETE NO ACTION
+);
+2026-01-03 22:24:46 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ConversionJobs] (
+    [JobId] uniqueidentifier NOT NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    [RequestId] uniqueidentifier NULL,
+    [InputFormat] int NOT NULL,
+    [Status] int NOT NULL,
+    [ErrorMessage] nvarchar(2000) NULL,
+    [PatientsCount] int NOT NULL,
+    [ObservationsCount] int NOT NULL,
+    [CompletedAt] datetime2 NULL,
+    [OriginalFileName] nvarchar(200) NULL,
+    [FileSizeBytes] bigint NULL,
+    [ProcessingTimeMs] bigint NULL,
+    [CreatedBy] nvarchar(100) NOT NULL,
+    [CreatedOn] datetime2 NOT NULL,
+    [UpdatedBy] nvarchar(100) NULL,
+    [UpdatedOn] datetime2 NULL,
+    CONSTRAINT [PK_ConversionJobs] PRIMARY KEY ([JobId]),
+    CONSTRAINT [FK_ConversionJobs_DataRequests_RequestId] FOREIGN KEY ([RequestId]) REFERENCES [DataRequests] ([RequestId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_ConversionJobs_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE NO ACTION
+);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ConversionJobs_RequestId] ON [ConversionJobs] ([RequestId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ConversionJobs_UserId] ON [ConversionJobs] ([UserId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_ApprovedByUserId] ON [DataRequests] ([ApprovedByUserId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_RequestingOrganizationId] ON [DataRequests] ([RequestingOrganizationId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_RequestingUserId] ON [DataRequests] ([RequestingUserId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_DataRequests_SourceOrganizationId] ON [DataRequests] ([SourceOrganizationId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Organizations_OrganizationId] ON [Organizations] ([OrganizationId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_PatientIdentifiers_GlobalPatientId_SourceOrganizationId] ON [PatientIdentifiers] ([GlobalPatientId], [SourceOrganizationId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_PatientIdentifiers_LastNameHash_DateOfBirthHash] ON [PatientIdentifiers] ([LastNameHash], [DateOfBirthHash]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_PatientIdentifiers_NationalIdHash] ON [PatientIdentifiers] ([NationalIdHash]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_PatientIdentifiers_SourceOrganizationId] ON [PatientIdentifiers] ([SourceOrganizationId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [IX_Users_Email] ON [Users] ([Email]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Users_OrganizationId] ON [Users] ([OrganizationId]);
+2026-01-03 22:24:46 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260103165418_InitialCreate', N'10.0.1');
+2026-01-03 22:24:46 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-01-03 22:25:13 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-03 22:25:13 [INF] Now listening on: http://localhost:5201
+2026-01-03 22:25:13 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-03 22:25:13 [INF] Hosting environment: Development
+2026-01-03 22:25:13 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-03 22:25:35 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - null null
+2026-01-03 22:25:35 [WRN] Failed to determine the https port for redirect.
+2026-01-03 22:25:35 [INF] CORS policy execution successful.
+2026-01-03 22:25:35 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - 204 null null 129.4961ms
+2026-01-03 22:25:35 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - application/json 139
+2026-01-03 22:25:35 [INF] CORS policy execution successful.
+2026-01-03 22:25:36 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 22:25:36 [INF] Route matched with {action = "RegisterWithOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterWithOtp(Kanini.Application.DTOs.Auth.RegisterWithOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:25:36 [INF] Registration OTP process started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:25:42 [INF] Email sent successfully to: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:25:42 [INF] Registration OTP sent successfully for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:25:42 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.OtpResponseDto'.
+2026-01-03 22:25:42 [INF] Executed action Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api) in 6010.6667ms
+2026-01-03 22:25:42 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 22:25:42 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - 200 null application/json; charset=utf-8 6197.8182ms
+2026-01-03 22:26:05 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - null null
+2026-01-03 22:26:05 [INF] CORS policy execution successful.
+2026-01-03 22:26:05 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - 204 null null 10.8961ms
+2026-01-03 22:26:05 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - application/json 358
+2026-01-03 22:26:05 [INF] CORS policy execution successful.
+2026-01-03 22:26:05 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 22:26:05 [INF] Route matched with {action = "VerifyRegistrationOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] VerifyRegistrationOtp(Kanini.Application.DTOs.Auth.VerifyRegistrationOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:26:05 [INF] Registration verification started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:26:07 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 300), @p2='?' (Size = 200), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Boolean), @p6='?' (Size = 500), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Organizations] ([OrganizationId], [ContactEmail], [ContactPhone], [CreatedBy], [CreatedOn], [IsActive], [Name], [Type], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2026-01-03 22:26:07 [INF] Executed DbCommand (16ms) [Parameters=[@p4='?' (DbType = Guid), @p0='?' (Size = 300), @p1='?' (Size = 200), @p2='?' (Size = 100), @p3='?' (Size = 500), @p5='?' (DbType = Guid), @p6='?' (Size = 100), @p7='?' (DbType = DateTime2), @p8='?' (Size = 150), @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p12='?' (Size = 256), @p13='?' (DbType = Int32), @p14='?' (Size = 100), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Organizations] SET [ContactEmail] = @p0, [ContactPhone] = @p1, [CreatedBy] = @p2, [Name] = @p3
+OUTPUT 1
+WHERE [OrganizationId] = @p4;
+INSERT INTO [Users] ([UserId], [CreatedBy], [CreatedOn], [Email], [IsActive], [LastLogin], [OrganizationId], [PasswordHash], [Role], [UpdatedBy], [UpdatedOn])
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-01-03 22:26:07 [INF] Registration verification completed for email: sujithkumarsenthilkumar777@gmail.com, UserId: "e73aefa2-97a0-4374-e43b-08de4ae8fd5f"
+2026-01-03 22:26:07 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.RegistrationResponseDto'.
+2026-01-03 22:26:07 [INF] Executed action Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api) in 2374.3657ms
+2026-01-03 22:26:07 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 22:26:07 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - 200 null application/json; charset=utf-8 2437.8492ms
+2026-01-03 22:26:30 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 22:26:30 [INF] CORS policy execution successful.
+2026-01-03 22:26:30 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 8.0606ms
+2026-01-03 22:26:30 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-03 22:26:30 [INF] CORS policy execution successful.
+2026-01-03 22:26:30 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:26:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:26:30 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:26:30 [INF] Executed DbCommand (14ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-03 22:26:30 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: "e73aefa2-97a0-4374-e43b-08de4ae8fd5f"
+2026-01-03 22:26:30 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-03 22:26:30 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 310.934ms
+2026-01-03 22:26:30 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:26:30 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 471.0703ms
+2026-01-03 22:28:31 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 22:28:31 [INF] CORS policy execution successful.
+2026-01-03 22:28:31 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 6.5353ms
+2026-01-03 22:28:31 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 55
+2026-01-03 22:28:31 [INF] CORS policy execution successful.
+2026-01-03 22:28:31 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:28:31 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:28:31 [INF] Login attempt started for email: sujinano777@gmail.com
+2026-01-03 22:28:31 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-03 22:28:31 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 22.4212ms
+2026-01-03 22:28:31 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:28:31 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 400 null application/json; charset=utf-8 50.3912ms
+2026-01-03 22:29:13 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - null null
+2026-01-03 22:29:13 [INF] CORS policy execution successful.
+2026-01-03 22:29:13 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - 204 null null 8.2888ms
+2026-01-03 22:29:13 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - application/json 143
+2026-01-03 22:29:13 [INF] CORS policy execution successful.
+2026-01-03 22:29:13 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 22:29:13 [INF] Route matched with {action = "RegisterWithOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterWithOtp(Kanini.Application.DTOs.Auth.RegisterWithOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:29:13 [INF] Registration OTP process started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:29:13 [WRN] Registration attempt with existing email: sujithkumarsenthilkumar777@gmail.com
+2026-01-03 22:29:13 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-03 22:29:13 [INF] Executed action Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api) in 15.8281ms
+2026-01-03 22:29:13 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 22:29:13 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - 400 null application/json; charset=utf-8 45.6831ms
+2026-01-03 22:29:26 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - null null
+2026-01-03 22:29:26 [INF] CORS policy execution successful.
+2026-01-03 22:29:26 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/register-with-otp - 204 null null 18.3977ms
+2026-01-03 22:29:26 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - application/json 128
+2026-01-03 22:29:26 [INF] CORS policy execution successful.
+2026-01-03 22:29:26 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 22:29:26 [INF] Route matched with {action = "RegisterWithOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterWithOtp(Kanini.Application.DTOs.Auth.RegisterWithOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:29:26 [INF] Registration OTP process started for email: sujinano777@gmail.com
+2026-01-03 22:29:31 [INF] Email sent successfully to: sujinano777@gmail.com
+2026-01-03 22:29:31 [INF] Registration OTP sent successfully for email: sujinano777@gmail.com
+2026-01-03 22:29:31 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.OtpResponseDto'.
+2026-01-03 22:29:31 [INF] Executed action Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api) in 4912.0838ms
+2026-01-03 22:29:31 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.RegisterWithOtp (Kanini.Api)'
+2026-01-03 22:29:31 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/register-with-otp - 200 null application/json; charset=utf-8 4958.6541ms
+2026-01-03 22:29:43 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - null null
+2026-01-03 22:29:43 [INF] CORS policy execution successful.
+2026-01-03 22:29:43 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/verify-registration-otp - 204 null null 9.0323ms
+2026-01-03 22:29:43 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - application/json 307
+2026-01-03 22:29:43 [INF] CORS policy execution successful.
+2026-01-03 22:29:43 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 22:29:43 [INF] Route matched with {action = "VerifyRegistrationOtp", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] VerifyRegistrationOtp(Kanini.Application.DTOs.Auth.VerifyRegistrationOtpRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:29:43 [INF] Registration verification started for email: sujinano777@gmail.com
+2026-01-03 22:29:43 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 300), @p2='?' (Size = 200), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Boolean), @p6='?' (Size = 500), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Organizations] ([OrganizationId], [ContactEmail], [ContactPhone], [CreatedBy], [CreatedOn], [IsActive], [Name], [Type], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2026-01-03 22:29:43 [INF] Executed DbCommand (12ms) [Parameters=[@p4='?' (DbType = Guid), @p0='?' (Size = 300), @p1='?' (Size = 200), @p2='?' (Size = 100), @p3='?' (Size = 500), @p5='?' (DbType = Guid), @p6='?' (Size = 100), @p7='?' (DbType = DateTime2), @p8='?' (Size = 150), @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p12='?' (Size = 256), @p13='?' (DbType = Int32), @p14='?' (Size = 100), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Organizations] SET [ContactEmail] = @p0, [ContactPhone] = @p1, [CreatedBy] = @p2, [Name] = @p3
+OUTPUT 1
+WHERE [OrganizationId] = @p4;
+INSERT INTO [Users] ([UserId], [CreatedBy], [CreatedOn], [Email], [IsActive], [LastLogin], [OrganizationId], [PasswordHash], [Role], [UpdatedBy], [UpdatedOn])
+VALUES (@p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-01-03 22:29:43 [INF] Registration verification completed for email: sujinano777@gmail.com, UserId: "f3381aa2-5e72-48bb-e43c-08de4ae8fd5f"
+2026-01-03 22:29:43 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.RegistrationResponseDto'.
+2026-01-03 22:29:43 [INF] Executed action Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api) in 100.5264ms
+2026-01-03 22:29:43 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.VerifyRegistrationOtp (Kanini.Api)'
+2026-01-03 22:29:43 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/verify-registration-otp - 200 null application/json; charset=utf-8 126.0633ms
+2026-01-03 22:31:14 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-03 22:31:14 [INF] CORS policy execution successful.
+2026-01-03 22:31:14 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 7.5944ms
+2026-01-03 22:31:14 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 55
+2026-01-03 22:31:14 [INF] CORS policy execution successful.
+2026-01-03 22:31:14 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:31:14 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-03 22:31:14 [INF] Login attempt started for email: sujinano777@gmail.com
+2026-01-03 22:31:14 [INF] Executed DbCommand (12ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-03 22:31:14 [INF] Login completed successfully for email: sujinano777@gmail.com, UserId: "f3381aa2-5e72-48bb-e43c-08de4ae8fd5f"
+2026-01-03 22:31:14 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-03 22:31:14 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 46.8295ms
+2026-01-03 22:31:14 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-03 22:31:15 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 79.4994ms
+2026-01-03 22:31:42 [INF] Application is shutting down...

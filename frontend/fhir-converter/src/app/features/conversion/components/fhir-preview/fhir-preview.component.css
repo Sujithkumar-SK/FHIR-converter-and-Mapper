@@ -1,0 +1,79 @@
+.fhir-preview-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.preview-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.preview-header h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.bundle-summary .summary-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.summary-card .summary-icon {
+  font-size: 2.5rem;
+  margin-right: 15px;
+}
+
+.summary-card .summary-details h5 {
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.resource-section {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+.resource-section h5 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.resource-list .resource-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.resource-item .resource-badge {
+  width: 40px;
+  height: 40px;
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.download-section {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+.download-info {
+  margin-top: 10px;
+}

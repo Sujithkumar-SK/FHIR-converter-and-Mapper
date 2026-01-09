@@ -1,0 +1,157 @@
+<div class="row justify-content-center align-items-center min-vh-100">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="card shadow-lg border-0 auth-card">
+      <div class="card-header text-white text-center py-4">
+        <div class="mb-3">
+          <i class="fas fa-hospital-alt fa-3x mb-3 text-white"></i>
+        </div>
+        <h2 class="mb-0 fw-bold">
+          <i class="fas fa-user-plus me-2"></i>
+          FHIR Converter
+        </h2>
+        <p class="mb-0 mt-2 opacity-90 fs-5">Healthcare Data Registration</p>
+        <small class="opacity-75">Create your account to get started with secure data conversion</small>
+      </div>
+      
+      <div class="card-body">
+        <!-- Error Alert -->
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          {{ errorMessage }}
+          <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <!-- Email -->
+            <div class="col-12 mb-3">
+              <label for="email" class="form-label">
+                <i class="fas fa-envelope me-2 text-primary"></i>Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('email')"
+                placeholder="Enter your professional email">
+              <div *ngIf="isFieldInvalid('email')" class="invalid-feedback">
+                {{ getFieldError('email') }}
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="col-md-6 mb-3">
+              <label for="password" class="form-label">
+                <i class="fas fa-lock me-2 text-primary"></i>Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('password')"
+                placeholder="Min 8 characters">
+              <div *ngIf="isFieldInvalid('password')" class="invalid-feedback">
+                {{ getFieldError('password') }}
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-md-6 mb-3">
+              <label for="confirmPassword" class="form-label">
+                <i class="fas fa-shield-alt me-2 text-primary"></i>Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('confirmPassword')"
+                placeholder="Confirm password">
+              <div *ngIf="isFieldInvalid('confirmPassword')" class="invalid-feedback">
+                {{ getFieldError('confirmPassword') }}
+              </div>
+            </div>
+
+            <!-- Role -->
+            <div class="col-md-6 mb-3">
+              <label for="role" class="form-label">
+                <i class="fas fa-user-tag me-2 text-primary"></i>Organization Role
+              </label>
+              <select
+                id="role"
+                formControlName="role"
+                class="form-select form-select-lg"
+                [class.is-invalid]="isFieldInvalid('role')">
+                <option value="">Select your role</option>
+                <option *ngFor="let role of userRoles" [value]="role.value">
+                  <i class="{{ role.icon }}"></i> {{ role.label }}
+                </option>
+              </select>
+              <div *ngIf="isFieldInvalid('role')" class="invalid-feedback">
+                {{ getFieldError('role') }}
+              </div>
+            </div>
+
+            <!-- Organization Name -->
+            <div class="col-md-6 mb-3">
+              <label for="organizationName" class="form-label">
+                <i class="fas fa-building me-2 text-primary"></i>{{ getOrganizationLabel() }}
+              </label>
+              <input
+                type="text"
+                id="organizationName"
+                formControlName="organizationName"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('organizationName')"
+                [placeholder]="getOrganizationPlaceholder()">
+              <div *ngIf="isFieldInvalid('organizationName')" class="invalid-feedback">
+                {{ getFieldError('organizationName') }}
+              </div>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="col-md-6 mb-4">
+              <label for="mobileNumber" class="form-label">
+                <i class="fas fa-phone me-2 text-primary"></i>Mobile Number
+              </label>
+              <input
+                type="tel"
+                id="mobileNumber"
+                formControlName="mobileNumber"
+                class="form-control form-control-lg"
+                [class.is-invalid]="isFieldInvalid('mobileNumber')"
+                placeholder="Enter 10-digit mobile number">
+              <div *ngIf="isFieldInvalid('mobileNumber')" class="invalid-feedback">
+                {{ getFieldError('mobileNumber') }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid mb-4">
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg py-3"
+              [disabled]="isLoading || registerForm.invalid">
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+              <i *ngIf="!isLoading" class="fas fa-paper-plane me-2"></i>
+              {{ isLoading ? 'Sending Verification Code...' : 'Send Verification Code' }}
+            </button>
+          </div>
+        </form>
+
+        <!-- Login Link -->
+        <div class="text-center">
+          <div class="border-top pt-4">
+            <p class="mb-2 text-muted">Already have an account?</p>
+            <a routerLink="/auth/login" class="btn btn-outline-primary btn-lg">
+              <i class="fas fa-sign-in-alt me-2"></i>Sign In to Your Account
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

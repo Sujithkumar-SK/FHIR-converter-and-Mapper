@@ -1,0 +1,49 @@
+<div class="file-upload-container">
+  <div class="upload-area" 
+       [class.drag-over]="isDragOver"
+       (dragover)="onDragOver($event)"
+       (dragleave)="onDragLeave($event)"
+       (drop)="onDrop($event)">
+    
+    <div *ngIf="!selectedFile" class="upload-prompt">
+      <div class="upload-icon">📁</div>
+      <h3>Drag & Drop your file here</h3>
+      <p>or</p>
+      <label class="file-input-label">
+        <input type="file" 
+               (change)="onFileSelected($event)"
+               accept=".csv,.json,.xml"
+               class="file-input">
+        <span class="btn btn-primary">Browse Files</span>
+      </label>
+      <div class="file-info">
+        <small>Supported formats: CSV, JSON, XML (Max: 50MB)<br>
+        <em>Note: Each file should contain data for one patient only</em></small>
+      </div>
+    </div>
+
+    <div *ngIf="selectedFile" class="selected-file">
+      <div class="file-details">
+        <span class="file-icon">{{ getFileIcon(selectedFile.name) }}</span>
+        <div class="file-info">
+          <div class="file-name">{{ selectedFile.name }}</div>
+          <div class="file-size">{{ formatFileSize(selectedFile.size) }}</div>
+        </div>
+        <button class="btn-remove" (click)="removeFile()" [disabled]="isUploading">×</button>
+      </div>
+      
+      <div *ngIf="isUploading" class="upload-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="uploadProgress"></div>
+        </div>
+        <small>Uploading... {{ uploadProgress }}%</small>
+      </div>
+      
+      <div class="upload-actions" *ngIf="!isUploading">
+        <button class="btn btn-success" (click)="uploadFile()">
+          📤 Upload File
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

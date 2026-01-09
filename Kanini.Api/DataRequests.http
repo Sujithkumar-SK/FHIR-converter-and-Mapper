@@ -1,0 +1,48 @@
+### Data Request API Tests
+
+### 1. Create Data Request
+POST https://localhost:7000/api/data-requests
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "globalPatientId": "550e8400-e29b-41d4-a716-446655440000",
+  "sourceOrganizationId": "550e8400-e29b-41d4-a716-446655440001",
+  "notes": "Requesting patient data for continued care"
+}
+
+### 2. Get Data Requests (as requesting organization)
+GET https://localhost:7000/api/data-requests?isRequesting=true
+Authorization: Bearer {{jwt_token}}
+
+### 3. Get Data Requests (as source organization)
+GET https://localhost:7000/api/data-requests?isRequesting=false
+Authorization: Bearer {{jwt_token}}
+
+### 4. Get Pending Requests
+GET https://localhost:7000/api/data-requests/pending
+Authorization: Bearer {{jwt_token}}
+
+### 5. Get Specific Request
+GET https://localhost:7000/api/data-requests/550e8400-e29b-41d4-a716-446655440002
+Authorization: Bearer {{jwt_token}}
+
+### 6. Approve Request
+PUT https://localhost:7000/api/data-requests/550e8400-e29b-41d4-a716-446655440002/approve
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "status": 2,
+  "notes": "Request approved for data sharing"
+}
+
+### 7. Reject Request
+PUT https://localhost:7000/api/data-requests/550e8400-e29b-41d4-a716-446655440002/approve
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "status": 3,
+  "notes": "Request rejected - insufficient information"
+}

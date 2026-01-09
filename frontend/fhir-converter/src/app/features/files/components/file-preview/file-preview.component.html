@@ -1,0 +1,71 @@
+<div class="file-preview-container">
+  <div class="preview-header" *ngIf="previewData">
+    <div class="file-info">
+      <span class="file-icon">{{ getFormatIcon(previewData.format) }}</span>
+      <div class="file-details">
+        <h4>{{ previewData.originalFileName }}</h4>
+        <div class="file-meta">
+          <span class="format-badge">{{ getFormatText(previewData.format) }}</span>
+          <span class="record-count">{{ previewData.totalRecords }} record(s)</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-refresh" (click)="loadPreview()" [disabled]="isLoading">
+      {{ isLoading ? '⏳' : '🔄' }} Refresh
+    </button>
+  </div>
+
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading preview...</p>
+  </div>
+
+  <div class="error-state" *ngIf="error && !isLoading">
+    <div class="error-icon">❌</div>
+    <p>{{ error }}</p>
+    <button class="btn btn-primary" (click)="loadPreview()">Retry</button>
+  </div>
+
+  <div class="preview-content" *ngIf="previewData && !isLoading && !error">
+    <!-- CSV Table Preview -->
+    <div class="table-preview" *ngIf="isTableFormat()">
+      <div class="table-container">
+        <table class="preview-table">
+          <thead>
+            <tr>
+              <th *ngFor="let header of getTableHeaders()">{{ header }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of getTableRows()">
+              <td *ngFor="let header of getTableHeaders()">{{ row[header] || '-' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-note" *ngIf="previewData.totalRecords > getTableRows().length">
+        Showing first {{ getTableRows().length }} of {{ previewData.totalRecords }} records
+      </div>
+    </div>
+
+    <!-- JSON Preview -->
+    <div class="json-preview" *ngIf="previewData.format === InputFormat.JSON">
+      <div class="code-container">
+        <pre><code>{{ getJsonPreview() }}</code></pre>
+      </div>
+    </div>
+
+    <!-- XML/CCDA Preview -->
+    <div class="xml-preview" *ngIf="previewData.format === InputFormat.CCDA">
+      <div class="code-container">
+        <pre><code>{{ getXmlPreview() }}</code></pre>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-preview" *ngIf="!previewData.previewData || previewData.previewData.length === 0">
+      <div class="empty-icon">📄</div>
+      <p>No preview data available</p>
+    </div>
+  </div>
+</div>

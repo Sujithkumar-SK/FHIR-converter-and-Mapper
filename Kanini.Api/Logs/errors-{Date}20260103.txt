@@ -1,0 +1,8 @@
+2026-01-03 21:43:36.019 +05:30 [ERR] Error in Login for email: sujithkumarsenthilkumar777@gmail.com
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.ArgumentNullException.ThrowIfNull(Object argument, String paramName)
+   at System.Security.Claims.Claim..ctor(String type, String value, String valueType, String issuer, String originalIssuer, ClaimsIdentity subject, String propertyKey, String propertyValue)
+   at System.Security.Claims.Claim..ctor(String type, String value)
+   at Kanini.Application.Services.Users.JwtService.GenerateToken(User user) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\JwtService.cs:line 30
+   at Kanini.Api.Controllers.AuthController.Login(LoginRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\Controllers\AuthController.cs:line 134

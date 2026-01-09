@@ -1,0 +1,135 @@
+<div class="fhir-preview-container">
+  <div class="preview-header">
+    <h4>📜 FHIR Bundle Preview</h4>
+    <p>Preview your converted FHIR bundle before downloading</p>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading FHIR preview...</span>
+    </div>
+    <p class="mt-2">Generating FHIR bundle preview...</p>
+  </div>
+
+  <!-- FHIR Preview Content -->
+  <div *ngIf="!isLoading && fhirPreview" class="preview-content">
+    <!-- Bundle Summary -->
+    <div class="bundle-summary mb-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="summary-card">
+            <div class="summary-icon">🎆</div>
+            <div class="summary-details">
+              <h5>Bundle ID</h5>
+              <p class="text-muted">{{fhirPreview.bundleId}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="summary-card">
+            <div class="summary-icon">👥</div>
+            <div class="summary-details">
+              <h5>{{fhirPreview.patientCount}}</h5>
+              <p class="text-muted">Patient Resources</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="summary-card">
+            <div class="summary-icon">📊</div>
+            <div class="summary-details">
+              <h5>{{fhirPreview.observationCount}}</h5>
+              <p class="text-muted">Observation Resources</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resource Samples -->
+    <div class="resource-samples">
+      <!-- Patient Resources -->
+      <div class="resource-section mb-4">
+        <h5>👥 Patient Resources</h5>
+        <div class="resource-list">
+          <div *ngFor="let patient of fhirPreview.patientSample" class="resource-item">
+            <div class="resource-badge">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="resource-details">
+              <strong>{{patient}}</strong>
+              <small class="text-muted d-block">FHIR Patient Resource</small>
+            </div>
+          </div>
+          <div *ngIf="fhirPreview.patientCount > fhirPreview.patientSample.length" class="resource-item text-muted">
+            <div class="resource-badge">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="resource-details">
+              <em>+{{fhirPreview.patientCount - fhirPreview.patientSample.length}} more patients...</em>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Observation Resources -->
+      <div class="resource-section mb-4">
+        <h5>📊 Observation Resources</h5>
+        <div class="resource-list">
+          <div *ngFor="let observation of fhirPreview.observationSample" class="resource-item">
+            <div class="resource-badge">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="resource-details">
+              <strong>{{observation}}</strong>
+              <small class="text-muted d-block">FHIR Observation Resource</small>
+            </div>
+          </div>
+          <div *ngIf="fhirPreview.observationCount > fhirPreview.observationSample.length" class="resource-item text-muted">
+            <div class="resource-badge">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="resource-details">
+              <em>+{{fhirPreview.observationCount - fhirPreview.observationSample.length}} more observations...</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FHIR Compliance Info -->
+    <div class="alert alert-info">
+      <h6><i class="fas fa-info-circle"></i> FHIR R4 Compliance</h6>
+      <p class="mb-0">
+        This bundle follows FHIR R4 standards and includes proper resource references, 
+        identifiers, and metadata for healthcare interoperability.
+      </p>
+    </div>
+
+    <!-- Download Section -->
+    <div class="download-section mt-4">
+      <button 
+        class="btn btn-success btn-lg"
+        (click)="downloadFhirBundle()"
+        [disabled]="isDownloading">
+        <span *ngIf="isDownloading" class="spinner-border spinner-border-sm me-2" role="status"></span>
+        <i *ngIf="!isDownloading" class="fas fa-download me-2"></i>
+        {{isDownloading ? 'Downloading...' : 'Download FHIR Bundle'}}
+      </button>
+      
+      <div class="download-info mt-2">
+        <small class="text-muted">
+          <i class="fas fa-file-code"></i> 
+          JSON format • FHIR R4 compliant • Ready for EHR integration
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="!isLoading && !fhirPreview" class="alert alert-warning">
+    <h6><i class="fas fa-exclamation-triangle"></i> Preview Not Available</h6>
+    <p class="mb-0">Unable to generate FHIR bundle preview. The conversion may still be in progress.</p>
+  </div>
+</div>

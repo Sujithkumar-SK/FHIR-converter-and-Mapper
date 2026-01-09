@@ -1,0 +1,10 @@
+2026-01-01 21:51:44 [INF] Now listening on: http://localhost:5201
+2026-01-01 21:51:44 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-01 21:51:44 [INF] Hosting environment: Development
+2026-01-01 21:51:44 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-01 21:52:40 [INF] Application is shutting down...
+2026-01-01 21:52:50 [INF] Now listening on: http://localhost:5201
+2026-01-01 21:52:50 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-01 21:52:50 [INF] Hosting environment: Development
+2026-01-01 21:52:50 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-01 21:55:20 [INF] Application is shutting down...

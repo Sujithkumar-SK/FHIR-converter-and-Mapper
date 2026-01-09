@@ -1,0 +1,77 @@
+<div class="file-list-container">
+  <div class="file-list-header">
+    <h3>Uploaded Files</h3>
+    <span class="file-count">{{ files.length }} file(s)</span>
+  </div>
+
+  <div *ngIf="files.length === 0" class="empty-state">
+    <div class="empty-icon">📁</div>
+    <p>No files uploaded yet</p>
+  </div>
+
+  <div class="file-list" *ngIf="files.length > 0">
+    <div class="file-item" *ngFor="let file of files" [class.expired]="isExpired(file.expiresAt)">
+      <div class="file-header">
+        <div class="file-basic-info">
+          <span class="file-icon">{{ getFileIcon(file.detectedFormat) }}</span>
+          <div class="file-details">
+            <div class="file-name">{{ file.originalFileName }}</div>
+            <div class="file-meta">
+              <span class="file-size">{{ formatFileSize(file.fileSizeBytes) }}</span>
+              <span class="file-format">{{ getFormatText(file.detectedFormat) }}</span>
+              <span class="file-uploaded">{{ formatDate(file.uploadedAt) }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="file-status">
+          <span class="status-badge" [class]="'status-' + file.status">
+            {{ getStatusIcon(file.status) }} {{ getStatusText(file.status) }}
+          </span>
+        </div>
+        
+        <div class="file-actions">
+          <button class="btn btn-sm btn-outline" 
+                  (click)="validateFile(file.fileId)"
+                  [disabled]="isValidating(file.fileId)"
+                  title="Validate File">
+            {{ isValidating(file.fileId) ? '⏳' : '✓' }}
+          </button>
+          <button class="btn btn-sm btn-danger" 
+                  (click)="deleteFile(file.fileId)"
+                  title="Delete File">
+            🗑️
+          </button>
+        </div>
+      </div>
+
+      <div class="file-validation" *ngIf="getValidationResult(file.fileId) as validation">
+        <div class="validation-status" [class.valid]="validation.isValid" [class.invalid]="!validation.isValid">
+          <span class="validation-icon">{{ validation.isValid ? '✅' : '❌' }}</span>
+          <span class="validation-text">
+            {{ validation.isValid ? 'Valid' : 'Invalid' }} - {{ validation.recordCount }} record(s)
+          </span>
+        </div>
+        
+        <div class="validation-errors" *ngIf="validation.validationErrors.length > 0">
+          <div class="error-item" *ngFor="let error of validation.validationErrors">
+            ⚠️ {{ error }}
+          </div>
+        </div>
+        
+        <div class="validation-preview" *ngIf="validation.previewRecords.length > 0">
+          <div class="preview-header">Preview:</div>
+          <div class="preview-content">
+            <div class="preview-record" *ngFor="let record of validation.previewRecords.slice(0, 3)">
+              {{ record }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-expiry" *ngIf="isExpired(file.expiresAt)">
+        ⚠️ This file has expired and will be cleaned up automatically
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+2026-01-09 16:14:22.328 +05:30 [ERR] Error executing stored procedure: sp_CheckUserExistsByEmail
+System.InvalidCastException: Unable to cast object of type 'System.Int32' to type 'System.Boolean'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_Boolean()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetBoolean(Int32 i)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 104
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 43
+2026-01-09 16:14:22.384 +05:30 [ERR] Registration OTP failed for email: sujinano777@gmail.com, Error: Unable to cast object of type 'System.Int32' to type 'System.Boolean'.
+System.InvalidCastException: Unable to cast object of type 'System.Int32' to type 'System.Boolean'.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_Boolean()
+   at Microsoft.Data.SqlClient.SqlDataReader.GetBoolean(Int32 i)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 104
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 43
+   at Kanini.Data.Repositories.Users.UserReadRepository.ExistsByEmailAsync(String email) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\Users\UserReadRepository.cs:line 24
+   at Kanini.Application.Services.Users.AuthService.RegisterWithOtpAsync(RegisterWithOtpRequestDto request) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Users\AuthService.cs:line 54
