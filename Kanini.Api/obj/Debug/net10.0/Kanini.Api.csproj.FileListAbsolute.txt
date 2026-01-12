@@ -230,6 +230,7 @@ C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\Kanini.Api.csproj.CoreCompileInputs.cache
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\Kanini.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\Kanini.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\Kanini.Api.sourcelink.json
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json

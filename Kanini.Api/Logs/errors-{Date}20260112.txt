@@ -1,0 +1,35 @@
+2026-01-12 13:52:51.788 +05:30 [ERR] Error executing stored procedure: sp_CheckDataRequestExists
+System.IndexOutOfRangeException: UserExists
+   at Microsoft.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.DataReaderExtensions.GetBoolean(DbDataReader reader, String name)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 104
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 43
+2026-01-12 13:52:51.902 +05:30 [ERR] Error checking if data request exists for patient "b2faadec-73ee-45a9-90fa-fffbf125ec50"
+System.IndexOutOfRangeException: UserExists
+   at Microsoft.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.DataReaderExtensions.GetBoolean(DbDataReader reader, String name)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 104
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 43
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.CheckRequestExistsAsync(Guid globalPatientId, Guid requestingOrganizationId, Guid sourceOrganizationId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 71
+2026-01-12 13:52:51.942 +05:30 [ERR] Data request creation failed for GlobalPatientId: "b2faadec-73ee-45a9-90fa-fffbf125ec50", Error: UserExists
+System.IndexOutOfRangeException: UserExists
+   at Microsoft.Data.SqlClient.SqlDataReader.GetOrdinal(String name)
+   at System.Data.DataReaderExtensions.GetBoolean(DbDataReader reader, String name)
+   at Kanini.Data.Infrastructure.DatabaseReader.MapToObject[T](SqlDataReader reader) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 104
+   at Kanini.Data.Infrastructure.DatabaseReader.QuerySingleOrDefaultAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 43
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.CheckRequestExistsAsync(Guid globalPatientId, Guid requestingOrganizationId, Guid sourceOrganizationId) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 71
+   at Kanini.Application.Services.DataRequests.DataRequestService.CreateRequestAsync(CreateDataRequestDto request, Guid requestingUserId, Guid requestingOrganizationId, String createdBy) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\DataRequests\DataRequestService.cs:line 45
+2026-01-12 17:45:26.442 +05:30 [ERR] Error parsing CCDA file for field detection
+System.Xml.XmlException: 'xsi' is an undeclared prefix. Line 87, position 26.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg, Int32 lineNo, Int32 linePos)
+   at System.Xml.XmlTextReaderImpl.LookupNamespace(NodeData node)
+   at System.Xml.XmlTextReaderImpl.AttributeNamespaceLookup()
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.LoadXml(String xml)
+   at Kanini.Application.Services.Conversion.FieldDetectionService.ExtractCcdaFieldsAsync(String filePath) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\Conversion\FieldDetectionService.cs:line 264

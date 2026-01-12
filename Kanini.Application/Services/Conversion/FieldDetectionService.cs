@@ -4,6 +4,8 @@ using Kanini.Common.Constants;
 using Kanini.Common.Results;
 using Kanini.Data.DatabaseContext;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
+using System.Xml;
 
 namespace Kanini.Application.Services.Conversion;
 
@@ -111,12 +113,12 @@ public class FieldDetectionService : IFieldDetectionService
                 return firstLine.Length > 0 ? firstLine[0].Split(',').Select(h => h.Trim()).ToList() : new List<string>();
             
             case Domain.Enums.InputFormat.JSON:
-                // For JSON, we'd need to parse and extract keys
-                return new List<string> { "patient_id", "name", "dob", "tests" };
+                // Parse JSON and extract all possible field paths
+                return await ExtractJsonFieldsAsync(filePath);
             
             case Domain.Enums.InputFormat.CCDA:
-                // For CCDA, we'd extract standard CCDA elements
-                return new List<string> { "patientRole", "name", "birthTime", "observations" };
+                // Parse CCDA XML and extract field paths
+                return await ExtractCcdaFieldsAsync(filePath);
             
             default:
                 return new List<string>();
@@ -195,5 +197,119 @@ public class FieldDetectionService : IFieldDetectionService
             "observation.code",
             "observation.valueQuantity.value"
         };
+    }
+
+    private async Task<List<string>> ExtractJsonFieldsAsync(string filePath)
+    {
+        try
+        {
+            var jsonContent = await File.ReadAllTextAsync(filePath);
+            var jsonDoc = JsonDocument.Parse(jsonContent);
+            var fields = new List<string>();
+            
+            ExtractJsonFields(jsonDoc.RootElement, "", fields);
+            return fields;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error parsing JSON file for field detection");
+            return new List<string>();
+        }
+    }
+
+    private void ExtractJsonFields(JsonElement element, string prefix, List<string> fields)
+    {
+        switch (element.ValueKind)
+        {
+            case JsonValueKind.Object:
+                foreach (var property in element.EnumerateObject())
+                {
+                    var fieldName = string.IsNullOrEmpty(prefix) ? property.Name : $"{prefix}.{property.Name}";
+                    
+                    if (property.Value.ValueKind == JsonValueKind.Object)
+                    {
+                        ExtractJsonFields(property.Value, fieldName, fields);
+                    }
+                    else if (property.Value.ValueKind == JsonValueKind.Array)
+                    {
+                        // For arrays, check first element to get structure
+                        if (property.Value.GetArrayLength() > 0)
+                        {
+                            var firstElement = property.Value.EnumerateArray().First();
+                            if (firstElement.ValueKind == JsonValueKind.Object)
+                            {
+                                ExtractJsonFields(firstElement, fieldName, fields);
+                            }
+                            else
+                            {
+                                fields.Add(fieldName);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        fields.Add(fieldName);
+                    }
+                }
+                break;
+        }
+    }
+
+    private async Task<List<string>> ExtractCcdaFieldsAsync(string filePath)
+    {
+        try
+        {
+            var xmlContent = await File.ReadAllTextAsync(filePath);
+            
+            // Add missing namespace declarations if not present
+            if (!xmlContent.Contains("xmlns:xsi="))
+            {
+                xmlContent = xmlContent.Replace(
+                    "<ClinicalDocument xmlns=\"urn:hl7-org:v3\">",
+                    "<ClinicalDocument xmlns=\"urn:hl7-org:v3\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
+                );
+            }
+            
+            var doc = new XmlDocument();
+            doc.LoadXml(xmlContent);
+            
+            var fields = new List<string>();
+            
+            // Extract common CCDA field mappings
+            fields.AddRange(new[]
+            {
+                "patient_id",
+                "first_name", 
+                "last_name",
+                "birth_date",
+                "gender",
+                "phone",
+                "email",
+                "address",
+                "test_name",
+                "test_result",
+                "unit",
+                "test_date"
+            });
+            
+            return fields;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error parsing CCDA file for field detection");
+            // Return common CCDA field mappings as fallback
+            return new List<string>
+            {
+                "patient_id",
+                "first_name", 
+                "last_name",
+                "birth_date",
+                "gender",
+                "test_name",
+                "test_result",
+                "unit",
+                "test_date"
+            };
+        }
     }
 }

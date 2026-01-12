@@ -57,6 +57,7 @@ C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\Kanini.Data.AssemblyInfoInputs.cache
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\Kanini.Data.AssemblyInfo.cs
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\Kanini.Data.csproj.CoreCompileInputs.cache
+C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\Kanini.Data.sourcelink.json
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\Kanini.D.862510D8.Up2Date
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\Kanini.Data.dll
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\obj\Debug\net10.0\refint\Kanini.Data.dll

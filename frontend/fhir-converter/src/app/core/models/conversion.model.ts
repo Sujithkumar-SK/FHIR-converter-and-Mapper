@@ -50,9 +50,9 @@ export const FhirFieldLabels: Record<string, string> = {
   'patient.name.family': 'Last Name',
   'patient.birthDate': 'Date of Birth',
   'patient.gender': 'Gender',
-  'observation.code': 'Test/Lab Name',
+  'observation.code': 'Test/Lab Name (mapped to LOINC)',
   'observation.valueQuantity.value': 'Test Result Value',
-  'observation.valueQuantity.unit': 'Unit of Measure',
+  'observation.valueQuantity.unit': 'Unit of Measure (mapped to UCUM)',
   'observation.effectiveDateTime': 'Test Date'
 };
 

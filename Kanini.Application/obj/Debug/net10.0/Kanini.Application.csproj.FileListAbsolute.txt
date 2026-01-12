@@ -58,6 +58,7 @@ C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debu
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\Kanini.Application.AssemblyInfoInputs.cache
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\Kanini.Application.AssemblyInfo.cs
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\Kanini.Application.csproj.CoreCompileInputs.cache
+C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\Kanini.Application.sourcelink.json
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\Kanini.A.C5DAA9F4.Up2Date
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\Kanini.Application.dll
 C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\obj\Debug\net10.0\refint\Kanini.Application.dll

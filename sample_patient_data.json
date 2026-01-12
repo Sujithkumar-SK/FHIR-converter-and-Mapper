@@ -1,0 +1,49 @@
+{
+  "patientId": "P12345",
+  "demographics": {
+    "firstName": "John",
+    "lastName": "Smith",
+    "dateOfBirth": "1985-03-15",
+    "gender": "Male",
+    "phone": "555-0123",
+    "email": "john.smith@email.com",
+    "address": {
+      "street": "123 Main St",
+      "city": "Springfield",
+      "state": "IL",
+      "zipCode": "62701"
+    }
+  },
+  "labResults": [
+    {
+      "testCode": "HGB",
+      "testName": "Hemoglobin",
+      "result": "14.2",
+      "unit": "g/dL",
+      "date": "2024-01-15"
+    },
+    {
+      "testCode": "WBC",
+      "testName": "White Blood Cells",
+      "result": "6.5",
+      "unit": "10^3/uL",
+      "date": "2024-01-15"
+    },
+    {
+      "testCode": "PLT",
+      "testName": "Platelets",
+      "result": "250",
+      "unit": "10^3/uL",
+      "date": "2024-01-15"
+    }
+  ],
+  "encounters": [
+    {
+      "date": "2024-01-15",
+      "vitals": {
+        "Blood Pressure": "120/80 mmHg",
+        "Heart Rate": "72 bpm"
+      }
+    }
+  ]
+}

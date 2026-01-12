@@ -503,7 +503,7 @@ public class FhirConversionService : IFhirConversionService
                 var headers = lines[0].Split(',').Select(h => h.Trim()).ToArray();
                 
                 // Map common CSV headers to FHIR fields
-                var mappings = new Dictionary<string, string>
+                var mappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
                 {
                     ["patient_id"] = "patient.identifier",
                     ["first_name"] = "patient.name.given",
@@ -523,7 +523,7 @@ public class FhirConversionService : IFhirConversionService
                 
                 foreach (var header in headers)
                 {
-                    var normalizedHeader = header.ToLowerInvariant();
+                    var normalizedHeader = header.ToLowerInvariant().Replace(" ", "_");
                     if (mappings.ContainsKey(normalizedHeader))
                     {
                         fieldMappings.Add(new FieldMappingDto

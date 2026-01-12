@@ -2,6 +2,22 @@
   <div class="mapping-header">
     <h3>🔗 Map Your Data Fields</h3>
     <p>Map your CSV columns to FHIR standard fields for accurate conversion</p>
+    
+    <!-- Terminology Info Banner -->
+    <div class="alert alert-light border-start border-primary border-4 mb-3">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h6 class="mb-1"><i class="fas fa-magic text-primary"></i> Automatic Healthcare Standards Mapping</h6>
+          <small class="text-muted">
+            Your test names will be mapped to <strong>LOINC codes</strong> and units to <strong>UCUM standards</strong> automatically during conversion.
+          </small>
+        </div>
+        <div class="col-md-4 text-end">
+          <span class="badge bg-success">LOINC Ready</span>
+          <span class="badge bg-info ms-1">UCUM Ready</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Loading State -->
@@ -63,11 +79,16 @@
 
     <!-- Required Fields Info -->
     <div class="alert alert-info mt-3">
-      <h6><i class="fas fa-info-circle"></i> Required Fields</h6>
-      <p class="mb-0">
+      <h6><i class="fas fa-info-circle"></i> Required Fields & FHIR Standards</h6>
+      <p class="mb-2">
         These fields must be mapped for successful conversion:
         <strong>{{getRequiredFieldsText()}}</strong>
       </p>
+      <div class="small text-muted">
+        <i class="fas fa-check-circle text-success"></i> Test names will be automatically mapped to <strong>LOINC codes</strong><br>
+        <i class="fas fa-check-circle text-success"></i> Units will be automatically mapped to <strong>UCUM standards</strong><br>
+        <i class="fas fa-check-circle text-success"></i> Output will be fully <strong>FHIR R4 compliant</strong>
+      </div>
     </div>
 
     <!-- Action Buttons -->

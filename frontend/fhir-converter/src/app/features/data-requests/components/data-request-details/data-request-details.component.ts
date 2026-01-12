@@ -40,6 +40,7 @@ export class DataRequestDetailsComponent implements OnInit {
   currentStep: 'upload' | 'mapping' | 'converting' | 'preview' = 'upload';
   selectedFileForConversion: FileUploadResponse | null = null;
   conversionJobId: string | null = null;
+  fieldMappings: FieldMapping[] = [];
   
   readonly DataRequestStatus = DataRequestStatus;
   readonly DataRequestStatusLabels = DataRequestStatusLabels;
@@ -106,24 +107,17 @@ export class DataRequestDetailsComponent implements OnInit {
   onMappingComplete(fieldMappings: FieldMapping[]): void {
     if (!this.selectedFileForConversion) return;
     
-    const conversionRequest: StartConversionRequest = {
-      fileId: this.selectedFileForConversion.fileId,
-      fieldMappings: fieldMappings
-    };
-    
-    this.conversionService.startConversion(conversionRequest).subscribe({
-      next: (status) => {
-        this.conversionJobId = status.jobId;
-        this.currentStep = 'converting';
-        this.notificationService.showSuccess('Conversion started successfully!');
-      },
-      error: (error) => {
-        this.notificationService.showError('Failed to start conversion: ' + (error.error?.message || 'Unknown error'));
-      }
-    });
+    // Store field mappings for conversion step
+    this.fieldMappings = fieldMappings;
+    this.currentStep = 'converting';
   }
 
   onConversionComplete(): void {
+    this.currentStep = 'preview';
+  }
+
+  onConversionCompleteWithJobId(jobId: string): void {
+    this.conversionJobId = jobId;
     this.currentStep = 'preview';
   }
 

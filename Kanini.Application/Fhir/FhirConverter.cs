@@ -1,6 +1,8 @@
 using Hl7.Fhir.Model;
 using Kanini.Application.Models;
+using Kanini.Application.Services.Terminology;
 using Kanini.Common.Results;
+using Microsoft.Extensions.Logging;
 
 namespace Kanini.Application.Fhir;
 
@@ -13,25 +15,36 @@ public interface IFhirConverter
 
 public class FhirConverter : IFhirConverter
 {
+    private readonly ITerminologyMappingService _terminologyService;
+    private readonly ILogger<FhirConverter> _logger;
+
+    public FhirConverter(ITerminologyMappingService terminologyService, ILogger<FhirConverter> logger)
+    {
+        _terminologyService = terminologyService;
+        _logger = logger;
+    }
     public Result<Patient> ConvertPatient(InternalPatient internalPatient)
     {
         try
         {
+            // FHIR Rule: Patient.id = patient-{patientIdentifier}
+            var patientId = internalPatient.Id.StartsWith("patient-") ? internalPatient.Id : $"patient-{internalPatient.Id}";
+            
             var patient = new Patient
             {
-                Id = internalPatient.Id
+                Id = patientId
             };
 
-            // Add identifiers
+            // Add identifiers with meaningful system
             foreach (var identifier in internalPatient.Identifiers)
             {
                 patient.Identifier.Add(new Identifier(identifier.System, identifier.Value));
             }
 
-            // Add default identifier if none provided
+            // Add default identifier if none provided - use meaningful system
             if (!patient.Identifier.Any())
             {
-                patient.Identifier.Add(new Identifier("http://hospital.org/patient-id", internalPatient.Id));
+                patient.Identifier.Add(new Identifier("http://hospital.org/patient-id", internalPatient.Id.Replace("patient-", "")));
             }
 
             // Add name
@@ -45,13 +58,13 @@ public class FhirConverter : IFhirConverter
                 patient.Name.Add(name);
             }
 
-            // Add birth date
+            // Add birth date - must be yyyy-MM-dd format
             if (internalPatient.DateOfBirth.HasValue)
             {
                 patient.BirthDate = internalPatient.DateOfBirth.Value.ToString("yyyy-MM-dd");
             }
 
-            // Add gender
+            // Add gender - must be valid FHIR enum
             patient.Gender = ParseGender(internalPatient.Gender);
 
             // Add contact info
@@ -97,24 +110,41 @@ public class FhirConverter : IFhirConverter
             var observation = new Observation
             {
                 Id = internalObservation.Id,
-                Status = ParseObservationStatus(internalObservation.Status),
-                Subject = new ResourceReference($"Patient/{internalObservation.PatientId}")
+                Status = ParseObservationStatus(internalObservation.Status)
             };
 
-            // Add code
-            observation.Code = new CodeableConcept(
-                internalObservation.System ?? "http://loinc.org",
-                internalObservation.Code,
-                internalObservation.Display ?? internalObservation.Code
-            );
+            // FHIR Rule: Observation.subject MUST reference Patient
+            var patientId = internalObservation.PatientId.StartsWith("patient-") ? internalObservation.PatientId : $"patient-{internalObservation.PatientId}";
+            observation.Subject = new ResourceReference($"Patient/{patientId}");
 
-            // Add value
+            // FHIR Rule: Observation.code MUST use LOINC
+            var (codeSystem, loincCode, codeDisplay) = _terminologyService.ResolveObservationCode(internalObservation.Code);
+            observation.Code = new CodeableConcept
+            {
+                Coding = new List<Coding>
+                {
+                    new Coding
+                    {
+                        System = codeSystem,
+                        Code = loincCode,
+                        Display = codeDisplay
+                    }
+                }
+            };
+
+            // Add value with proper UCUM units
+            var (unitSystem, ucumCode, unitDisplay) = _terminologyService.ResolveUnitCode(internalObservation.ValueUnit ?? "");
+            
             if (internalObservation.ValueQuantity.HasValue)
             {
-                observation.Value = new Quantity(
-                    internalObservation.ValueQuantity.Value,
-                    internalObservation.ValueUnit ?? ""
-                );
+                // FHIR Rule: Observation.valueQuantity MUST use UCUM
+                observation.Value = new Quantity
+                {
+                    Value = internalObservation.ValueQuantity.Value,
+                    Unit = unitDisplay,
+                    System = unitSystem,
+                    Code = ucumCode
+                };
             }
             else if (!string.IsNullOrEmpty(internalObservation.ValueString))
             {
@@ -127,10 +157,12 @@ public class FhirConverter : IFhirConverter
                 observation.Effective = new FhirDateTime(internalObservation.EffectiveDateTime.Value);
             }
 
+            _logger.LogDebug("Converted observation with LOINC code {LoincCode} and UCUM unit {UcumCode}", loincCode, ucumCode);
             return Result.Success(observation);
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Failed to convert observation: {Error}", ex.Message);
             return Result.Failure<Observation>($"Failed to convert observation: {ex.Message}");
         }
     }
@@ -139,6 +171,7 @@ public class FhirConverter : IFhirConverter
     {
         try
         {
+            // FHIR Rule: Bundle type = collection
             var bundle = new Bundle
             {
                 Id = $"bundle-{jobId}",
@@ -146,16 +179,24 @@ public class FhirConverter : IFhirConverter
                 Timestamp = DateTimeOffset.UtcNow
             };
 
-            // Add patient
+            // FHIR Rule: Bundle contains 1 Patient + N Observations
+            // Add patient first
             bundle.Entry.Add(new Bundle.EntryComponent
             {
                 FullUrl = $"Patient/{patient.Id}",
                 Resource = patient
             });
 
-            // Add observations
+            // Add observations - all must reference the same patient
             foreach (var observation in observations)
             {
+                // Validate that observation references the correct patient
+                if (observation.Subject?.Reference != $"Patient/{patient.Id}")
+                {
+                    _logger.LogWarning("Observation {ObsId} does not reference correct patient {PatientId}", 
+                        observation.Id, patient.Id);
+                }
+                
                 bundle.Entry.Add(new Bundle.EntryComponent
                 {
                     FullUrl = $"Observation/{observation.Id}",
@@ -163,10 +204,12 @@ public class FhirConverter : IFhirConverter
                 });
             }
 
+            _logger.LogInformation("Created FHIR Bundle with 1 Patient and {ObservationCount} Observations", observations.Count);
             return Result.Success(bundle);
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Failed to create FHIR bundle: {Error}", ex.Message);
             return Result.Failure<Bundle>($"Failed to create bundle: {ex.Message}");
         }
     }

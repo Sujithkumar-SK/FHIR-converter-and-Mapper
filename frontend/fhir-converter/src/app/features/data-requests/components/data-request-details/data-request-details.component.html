@@ -142,14 +142,16 @@
   </div>
 
   <!-- Conversion Progress Step -->
-  <div class="conversion-section" *ngIf="currentStep === 'converting' && conversionJobId">
+  <div class="conversion-section" *ngIf="currentStep === 'converting' && selectedFileForConversion">
     <div class="section-header">
       <h3>🔄 Step 3: Converting to FHIR</h3>
       <p>Processing your data and generating FHIR bundle...</p>
     </div>
     
     <app-conversion-progress 
-      [jobId]="conversionJobId">
+      [fileId]="selectedFileForConversion.fileId"
+      [fieldMappings]="fieldMappings"
+      (conversionComplete)="onConversionCompleteWithJobId($event)">
     </app-conversion-progress>
     
     <div class="mt-3">

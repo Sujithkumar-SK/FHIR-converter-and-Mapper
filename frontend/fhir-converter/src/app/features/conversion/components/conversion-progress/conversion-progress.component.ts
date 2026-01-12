@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConversionService } from '../../../../core/services/conversion.service';
-import { ConversionStatus, ConversionStatusLabels } from '../../../../core/models/conversion.model';
+import { NotificationService } from '../../../../core/services/notification.service';
+import { ConversionStatus, ConversionStatusLabels, FieldMapping, StartConversionRequest } from '../../../../core/models/conversion.model';
 import { interval, Subscription } from 'rxjs';
 import { switchMap, takeWhile } from 'rxjs/operators';
 
@@ -13,35 +14,67 @@ import { switchMap, takeWhile } from 'rxjs/operators';
   styleUrl: './conversion-progress.component.css'
 })
 export class ConversionProgressComponent implements OnInit, OnDestroy {
-  @Input() jobId!: string;
+  @Input() fileId!: string;
+  @Input() fieldMappings: FieldMapping[] = [];
+  @Output() conversionComplete = new EventEmitter<string>();
   
   conversionStatus: ConversionStatus | null = null;
+  isStarting = false;
   private statusSubscription?: Subscription;
   
   readonly ConversionStatusLabels = ConversionStatusLabels;
 
-  constructor(private conversionService: ConversionService) {}
+  constructor(
+    private conversionService: ConversionService,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
-    this.startStatusPolling();
+    this.startConversion();
   }
 
   ngOnDestroy(): void {
     this.statusSubscription?.unsubscribe();
   }
 
-  startStatusPolling(): void {
+  private startConversion(): void {
+    this.isStarting = true;
+    
+    const request: StartConversionRequest = {
+      fileId: this.fileId,
+      fieldMappings: this.fieldMappings
+    };
+
+    this.conversionService.startConversion(request).subscribe({
+      next: (status) => {
+        this.conversionStatus = status;
+        this.isStarting = false;
+        this.startStatusPolling(status.jobId);
+      },
+      error: (error) => {
+        this.isStarting = false;
+        this.notificationService.showError('Failed to start conversion');
+      }
+    });
+  }
+
+  private startStatusPolling(jobId: string): void {
     this.statusSubscription = interval(2000)
       .pipe(
-        switchMap(() => this.conversionService.getConversionStatus(this.jobId)),
+        switchMap(() => this.conversionService.getConversionStatus(jobId)),
         takeWhile(status => status.status === 'Processing', true)
       )
       .subscribe({
         next: (status) => {
           this.conversionStatus = status;
+          if (status.status === 'Completed') {
+            this.conversionComplete.emit(jobId);
+          } else if (status.status === 'Failed') {
+            this.notificationService.showError(status.errorMessage || 'Conversion failed');
+          }
         },
         error: (error) => {
-          console.error('Error polling conversion status:', error);
+          this.notificationService.showError('Failed to get conversion status');
         }
       });
   }

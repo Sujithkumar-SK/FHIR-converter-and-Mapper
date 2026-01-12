@@ -99,30 +99,28 @@
     </div>
 
     <!-- FHIR Compliance Info -->
-    <div class="alert alert-info">
-      <h6><i class="fas fa-info-circle"></i> FHIR R4 Compliance</h6>
-      <p class="mb-0">
-        This bundle follows FHIR R4 standards and includes proper resource references, 
-        identifiers, and metadata for healthcare interoperability.
-      </p>
+    <div class="alert alert-success">
+      <h6><i class="fas fa-check-circle"></i> FHIR R4 Compliance & Healthcare Standards</h6>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="mb-1"><strong>✅ LOINC Codes:</strong> Test names mapped to standard LOINC terminology</p>
+          <p class="mb-1"><strong>✅ UCUM Units:</strong> Units converted to UCUM standard codes</p>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1"><strong>✅ FHIR Structure:</strong> Proper resource references and identifiers</p>
+          <p class="mb-1"><strong>✅ EHR Ready:</strong> Compatible with major healthcare systems</p>
+        </div>
+      </div>
     </div>
 
     <!-- Download Section -->
     <div class="download-section mt-4">
-      <button 
-        class="btn btn-success btn-lg"
-        (click)="downloadFhirBundle()"
-        [disabled]="isDownloading">
-        <span *ngIf="isDownloading" class="spinner-border spinner-border-sm me-2" role="status"></span>
-        <i *ngIf="!isDownloading" class="fas fa-download me-2"></i>
-        {{isDownloading ? 'Downloading...' : 'Download FHIR Bundle'}}
-      </button>
-      
-      <div class="download-info mt-2">
-        <small class="text-muted">
-          <i class="fas fa-file-code"></i> 
-          JSON format • FHIR R4 compliant • Ready for EHR integration
-        </small>
+      <div class="alert alert-info">
+        <h6><i class="fas fa-info-circle"></i> FHIR Bundle Generated</h6>
+        <p class="mb-0">
+          Your data has been successfully converted to FHIR R4 format with proper LOINC and UCUM standards.
+          The conversion is complete and ready for healthcare system integration.
+        </p>
       </div>
     </div>
   </div>

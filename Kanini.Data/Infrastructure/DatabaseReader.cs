@@ -101,7 +101,7 @@ public class DatabaseReader : IDatabaseReader
     {
         if (typeof(T) == typeof(bool))
         {
-            return (T)(object)(reader.GetBoolean("UserExists"));
+            return (T)(object)(reader.GetBoolean("RequestExists"));
         }
         
         if (typeof(T) == typeof(User))

@@ -90,6 +90,12 @@ public static class MagicStrings
         public const string ConversionJobExpired = "Conversion job has expired";
         public const string UnsupportedConversionFormat = "Unsupported conversion format";
         
+        // Terminology error messages
+        public const string LoincMappingNotFound = "LOINC mapping not found for test name";
+        public const string UcumMappingNotFound = "UCUM mapping not found for unit";
+        public const string InvalidTerminologyCode = "Invalid terminology code provided";
+        public const string TerminologyServiceError = "Terminology service error occurred";
+        
         // Analytics error messages
         public const string AnalyticsDataNotFound = "Analytics data not found";
         public const string InvalidDateRange = "Invalid date range provided";
@@ -177,6 +183,14 @@ public static class MagicStrings
         public const string AnalyticsRequestStarted = "Analytics request started for type: {AnalyticsType}";
         public const string AnalyticsRequestCompleted = "Analytics request completed for type: {AnalyticsType}, Records: {RecordCount}";
         public const string AnalyticsRequestFailed = "Analytics request failed for type: {AnalyticsType}, Error: {Error}";
+        
+        // Terminology log messages
+        public const string LoincMappingFound = "LOINC mapping found for test '{TestName}': {LoincCode}";
+        public const string LoincMappingNotFound = "No LOINC mapping found for test '{TestName}', using fallback";
+        public const string UcumMappingFound = "UCUM mapping found for unit '{Unit}': {UcumCode}";
+        public const string UcumMappingNotFound = "No UCUM mapping found for unit '{Unit}', using as-is";
+        public const string TerminologyMappingStarted = "Terminology mapping started for test: {TestName}, unit: {Unit}";
+        public const string TerminologyMappingCompleted = "Terminology mapping completed - LOINC: {LoincCode}, UCUM: {UcumCode}";
     }
 
     public static class EmailTemplates

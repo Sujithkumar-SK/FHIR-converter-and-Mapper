@@ -5,15 +5,43 @@
         <i class="fas fa-exchange-alt me-2"></i>
         Convert Data to FHIR
       </h2>
-      <p class="text-muted mb-4">Upload and convert your medical data files to FHIR R4 format</p>
+      <p class="text-muted mb-4">Upload and convert your medical data files to FHIR R4 format with automatic LOINC and UCUM mapping</p>
     </div>
   </div>
 
-  <div class="row">
+  <!-- Progress Steps -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="conversion-steps">
+        <div class="step" [class.active]="currentStep === 1" [class.completed]="currentStep > 1">
+          <div class="step-number">1</div>
+          <div class="step-label">Upload File</div>
+        </div>
+        <div class="step-line" [class.completed]="currentStep > 1"></div>
+        <div class="step" [class.active]="currentStep === 2" [class.completed]="currentStep > 2">
+          <div class="step-number">2</div>
+          <div class="step-label">Map Fields</div>
+        </div>
+        <div class="step-line" [class.completed]="currentStep > 2"></div>
+        <div class="step" [class.active]="currentStep === 3" [class.completed]="currentStep > 3">
+          <div class="step-number">3</div>
+          <div class="step-label">Convert</div>
+        </div>
+        <div class="step-line" [class.completed]="currentStep > 3"></div>
+        <div class="step" [class.active]="currentStep === 4">
+          <div class="step-number">4</div>
+          <div class="step-label">Download</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 1: File Upload -->
+  <div *ngIf="currentStep === 1" class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h5>Upload Files for Conversion</h5>
+          <h5><i class="fas fa-upload me-2"></i>Step 1: Upload Your File</h5>
         </div>
         <div class="card-body">
           <app-file-upload (fileUploaded)="onFileUploaded($event)"></app-file-upload>
@@ -22,11 +50,65 @@
     </div>
   </div>
 
+  <!-- Step 2: Field Mapping -->
+  <div *ngIf="currentStep === 2 && uploadedFile" class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5><i class="fas fa-map me-2"></i>Step 2: Map Your Fields</h5>
+          <small class="text-muted">File: {{uploadedFile.originalFileName}}</small>
+        </div>
+        <div class="card-body">
+          <app-field-mapping 
+            [fileId]="uploadedFile.fileId" 
+            (mappingComplete)="onMappingComplete($event)">
+          </app-field-mapping>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Conversion Progress -->
+  <div *ngIf="currentStep === 3 && uploadedFile" class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5><i class="fas fa-cog fa-spin me-2"></i>Step 3: Converting to FHIR</h5>
+        </div>
+        <div class="card-body">
+          <app-conversion-progress 
+            [fileId]="uploadedFile.fileId"
+            [fieldMappings]="fieldMappings"
+            (conversionComplete)="onConversionComplete($event)">
+          </app-conversion-progress>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4: FHIR Preview & Download -->
+  <div *ngIf="currentStep === 4 && conversionJobId" class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5><i class="fas fa-download me-2"></i>Step 4: Download FHIR Bundle</h5>
+          <button class="btn btn-outline-primary btn-sm" (click)="startNewConversion()">
+            <i class="fas fa-plus me-1"></i>New Conversion
+          </button>
+        </div>
+        <div class="card-body">
+          <app-fhir-preview [jobId]="conversionJobId"></app-fhir-preview>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conversion History -->
   <div class="row mt-4">
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h5>Conversion History</h5>
+          <h5><i class="fas fa-history me-2"></i>Recent Conversions</h5>
         </div>
         <div class="card-body">
           <app-conversion-history></app-conversion-history>

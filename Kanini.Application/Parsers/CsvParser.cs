@@ -100,19 +100,27 @@ public class CsvParser : ICsvParser
 
     private Result<InternalObservation> ParseObservation(Dictionary<string, string> record, Dictionary<string, string> mappings, string patientId)
     {
-        if (!TryGetValue(record, mappings, "observation.code", out var code))
-            return Result.Failure<InternalObservation>("Observation code is required");
+        // Try to get test name first (for LOINC mapping)
+        string testName = string.Empty;
+        if (TryGetValue(record, mappings, "observation.code", out var code))
+        {
+            testName = code;
+        }
+        else if (TryGetValue(record, mappings, "observation.display", out var display))
+        {
+            testName = display;
+        }
+        else
+        {
+            return Result.Failure<InternalObservation>("Observation code/test name is required");
+        }
 
         var observation = new InternalObservation
         {
-            Code = code,
-            Display = code, // Use code as display if no specific display mapping
+            Code = testName, // This will be mapped to LOINC by TerminologyService
+            Display = testName,
             PatientId = patientId
         };
-
-        // Try to get specific display, otherwise use code
-        if (TryGetValue(record, mappings, "observation.display", out var display))
-            observation.Display = display;
 
         // Handle value - try numeric first, then string
         if (TryGetValue(record, mappings, "observation.valueQuantity.value", out var value))
@@ -127,7 +135,7 @@ public class CsvParser : ICsvParser
             }
         }
 
-        // Get unit if available
+        // Get unit if available (will be mapped to UCUM by TerminologyService)
         if (TryGetValue(record, mappings, "observation.valueQuantity.unit", out var valueUnit))
             observation.ValueUnit = valueUnit;
 

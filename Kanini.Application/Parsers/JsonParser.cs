@@ -97,14 +97,34 @@ public class JsonParser : IJsonParser
         {
             foreach (var result in results.EnumerateObject())
             {
-                observations.Add(new InternalObservation
+                var observation = new InternalObservation
                 {
                     PatientId = patientId,
-                    Code = result.Name,
+                    Code = result.Name, // Test name for LOINC mapping
                     Display = result.Name,
-                    ValueString = result.Value.GetString(),
                     EffectiveDateTime = DateTime.UtcNow
-                });
+                };
+
+                // Parse value and unit
+                var valueStr = result.Value.GetString();
+                if (!string.IsNullOrEmpty(valueStr))
+                {
+                    var parts = valueStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length > 0 && decimal.TryParse(parts[0], out var numericValue))
+                    {
+                        observation.ValueQuantity = numericValue;
+                        if (parts.Length > 1)
+                        {
+                            observation.ValueUnit = string.Join(" ", parts.Skip(1));
+                        }
+                    }
+                    else
+                    {
+                        observation.ValueString = valueStr;
+                    }
+                }
+
+                observations.Add(observation);
             }
         }
 
@@ -120,19 +140,28 @@ public class JsonParser : IJsonParser
             var observation = new InternalObservation
             {
                 PatientId = patientId,
-                Code = vital.Name,
+                Code = vital.Name, // Test name for LOINC mapping
                 Display = vital.Name,
-                ValueString = vital.Value.GetString(),
                 EffectiveDateTime = DateTime.UtcNow
             };
 
-            // Try to parse numeric values
-            if (decimal.TryParse(vital.Value.GetString()?.Split(' ')[0], out var numericValue))
+            // Parse value and unit
+            var valueStr = vital.Value.GetString();
+            if (!string.IsNullOrEmpty(valueStr))
             {
-                observation.ValueQuantity = numericValue;
-                var parts = vital.Value.GetString()?.Split(' ');
-                if (parts?.Length > 1)
-                    observation.ValueUnit = string.Join(" ", parts.Skip(1));
+                var parts = valueStr.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length > 0 && decimal.TryParse(parts[0], out var numericValue))
+                {
+                    observation.ValueQuantity = numericValue;
+                    if (parts.Length > 1)
+                    {
+                        observation.ValueUnit = string.Join(" ", parts.Skip(1));
+                    }
+                }
+                else
+                {
+                    observation.ValueString = valueStr;
+                }
             }
 
             observations.Add(observation);

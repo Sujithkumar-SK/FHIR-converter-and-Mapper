@@ -4,6 +4,7 @@ using Kanini.Application.Services.DataRequests;
 using Kanini.Application.Services.Files;
 using Kanini.Application.Services.Conversion;
 using Kanini.Application.Services.Analytics;
+using Kanini.Application.Services.Terminology;
 using Kanini.Application.Fhir;
 using Kanini.Application.Parsers;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +47,7 @@ public static class ApplicationServiceRegistration
         
         // FHIR Services
         services.AddScoped<IFhirConverter, FhirConverter>();
+        services.AddScoped<ITerminologyMappingService, TerminologyMappingService>();
         
         // Parser Services
         services.AddScoped<ICsvParser, CsvParser>();
