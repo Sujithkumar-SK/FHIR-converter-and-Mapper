@@ -39,11 +39,11 @@
               <td>{{request.requestingOrganizationName}}</td>
               <td>{{request.requestingUserEmail}}</td>
               <td>
-                <small>{{request.createdOn | date:'short'}}</small>
+                <small>{{request.createdOn | istDate:'short'}}</small>
               </td>
               <td>
                 <small [class.text-danger]="isExpired(request.expiresAt)">
-                  {{request.expiresAt | date:'short'}}
+                  {{request.expiresAt | istDate:'short'}}
                 </small>
                 <small *ngIf="isExpired(request.expiresAt)" class="text-danger d-block">
                   <i class="fas fa-exclamation-triangle"></i> Expired
@@ -90,8 +90,8 @@
             <p><strong>Patient ID:</strong> {{selectedRequest.globalPatientId}}</p>
             <p><strong>Requesting Organization:</strong> {{selectedRequest.requestingOrganizationName}}</p>
             <p><strong>Requesting User:</strong> {{selectedRequest.requestingUserEmail}}</p>
-            <p><strong>Created:</strong> {{selectedRequest.createdOn | date:'medium'}}</p>
-            <p><strong>Expires:</strong> {{selectedRequest.expiresAt | date:'medium'}}</p>
+            <p><strong>Created:</strong> {{selectedRequest.createdOn | istDate:'medium'}}</p>
+            <p><strong>Expires:</strong> {{selectedRequest.expiresAt | istDate:'medium'}}</p>
           </div>
           <div class="col-md-6">
             <h6>Request Notes</h6>

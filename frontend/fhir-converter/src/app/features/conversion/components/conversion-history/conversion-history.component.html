@@ -33,7 +33,7 @@
             <td>{{conversion.observationsProcessed}}</td>
             <td>
               <small *ngIf="conversion.completedAt" class="text-muted">
-                {{conversion.completedAt | date:'short'}}
+                {{conversion.completedAt | istDate:'short'}}
               </small>
               <span *ngIf="!conversion.completedAt" class="text-muted">-</span>
             </td>

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConversionService } from '../../../../core/services/conversion.service';
 import { ConversionStatus, ConversionStatusLabels } from '../../../../core/models/conversion.model';
+import { IstDatePipe } from '../../../../shared/pipes/ist-date.pipe';
 
 @Component({
   selector: 'app-conversion-history',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IstDatePipe],
   templateUrl: './conversion-history.component.html',
   styleUrl: './conversion-history.component.css'
 })

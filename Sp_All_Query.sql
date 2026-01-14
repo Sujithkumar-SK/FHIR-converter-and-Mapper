@@ -5,8 +5,8 @@ select * from DataRequests
 select * from ConversionJobs
 --delete from Users
 --delete from Organizations where Name='Admin'
---delete from DataRequests where RequestId='5895DCAD-31C5-401C-A803-4ED5139EBB33'
---delete from ConversionJobs where InputFormat=1
+--delete from DataRequests where Status=5
+--delete from ConversionJobs where InputFormat=2
 GO
 -------------------------------------------------------------
 CREATE OR ALTER PROCEDURE [dbo].[sp_CheckUserExistsByEmail]

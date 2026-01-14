@@ -94,11 +94,11 @@
                 </div>
               </td>
               <td>
-                <small>{{request.createdOn | date:'short'}}</small>
+                <small>{{request.createdOn | istDate:'short'}}</small>
               </td>
               <td>
                 <small [class.text-danger]="isExpired(request.expiresAt)">
-                  {{request.expiresAt | date:'short'}}
+                  {{request.expiresAt | istDate:'short'}}
                 </small>
               </td>
               <td>

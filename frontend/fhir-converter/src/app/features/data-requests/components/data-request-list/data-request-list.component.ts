@@ -5,13 +5,14 @@ import { DataRequestService } from '../../../../core/services/data-request.servi
 import { ConversionService } from '../../../../core/services/conversion.service';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { DataRequestResponse, DataRequestStatus, DataRequestStatusLabels } from '../../../../core/models/data-request.model';
+import { IstDatePipe } from '../../../../shared/pipes/ist-date.pipe';
 import { interval, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-data-request-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IstDatePipe],
   templateUrl: './data-request-list.component.html',
   styleUrl: './data-request-list.component.css'
 })

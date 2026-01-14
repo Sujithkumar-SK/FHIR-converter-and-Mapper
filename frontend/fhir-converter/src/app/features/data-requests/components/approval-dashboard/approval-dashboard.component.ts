@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { DataRequestService } from '../../../../core/services/data-request.service';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { DataRequestResponse, DataRequestStatus, DataRequestStatusLabels, ApproveDataRequestDto } from '../../../../core/models/data-request.model';
+import { IstDatePipe } from '../../../../shared/pipes/ist-date.pipe';
 
 @Component({
   selector: 'app-approval-dashboard',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, IstDatePipe],
   templateUrl: './approval-dashboard.component.html',
   styleUrl: './approval-dashboard.component.css'
 })
