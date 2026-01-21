@@ -469,7 +469,9 @@ public interface IUserRepository
 "I implemented a dual storage strategy for patient data. Sensitive fields like names are encrypted using AES-256 for secure storage and retrieval. The same fields are also hashed using SHA-256 to enable searching without decryption. The EncryptionInterceptor automatically encrypts data on save and decrypts on read, so the application layer doesn't need to handle encryption logic."
 
 ### **4. FHIR Standards Compliance**
-"The conversion engine follows HL7 FHIR R4 standards strictly. All observations use LOINC codes (e.g., Hemoglobin → 718-7), all units use UCUM (e.g., g/dL), and the bundle structure follows FHIR specifications with proper resource references. I created a TerminologyMappingService with 30+ common lab test mappings to ensure industry-standard codes."
+"The conversion engine follows HL7 FHIR R4 standards strictly. All observations use LOINC codes (e.g., Hemoglobin → 718-7), all units use UCUM (e.g., g/dL), and the bundle structure follows FHIR specifications with proper resource references. 
+
+I implemented a hybrid terminology mapping approach: the system first attempts to retrieve LOINC codes from the official FHIR Terminology Server API (tx.fhir.org). If the API is unavailable or times out (3-second timeout), it falls back to a local cache of 30+ common lab tests. This ensures both accuracy and reliability - we get the latest official codes when possible, but the system remains functional even without internet connectivity, which is critical for healthcare environments."
 
 ### **5. Security & Compliance**
 "Security is built into every layer. We use JWT tokens with HTTP-only cookies to prevent XSS attacks. All PII is encrypted at rest using AES-256. The system is stateless - medical data is never stored, only processed in-memory and immediately discarded. Auto-expiration policies ensure temporary data doesn't linger. All operations are logged without PHI for audit trails."
@@ -489,6 +491,9 @@ public interface IUserRepository
 
 **Q: Why not use EF Core for everything?**  
 A: EF Core is great for writes but ADO.NET with stored procedures is faster for reads. In healthcare, we have many read-heavy operations (searching patients, viewing requests), so performance matters.
+
+**Q: Why hardcoded LOINC mappings instead of always using an API?**  
+A: I use a hybrid approach - API first, local cache as fallback. The system tries to fetch LOINC codes from the official FHIR Terminology Server (tx.fhir.org) with a 3-second timeout. If the API fails or is slow, it falls back to 30+ hardcoded mappings. This ensures reliability in healthcare environments where internet connectivity might be unreliable, while still leveraging official terminology when available.
 
 **Q: How do you ensure HIPAA compliance?**  
 A: We implement encryption at rest (AES-256), encryption in transit (HTTPS), no PHI storage (stateless processing), auto-expiration policies, comprehensive audit logging, and role-based access control.

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kanini.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00341e236313845829215ac8ab9cf53a8f142052")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aceac9613d6f8b361dc01f6887ef0e4cd2e9bdad")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kanini.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kanini.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

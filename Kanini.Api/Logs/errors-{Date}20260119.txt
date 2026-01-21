@@ -1,0 +1,57 @@
+2026-01-19 18:59:54.957 +05:30 [ERR] Error executing stored procedure: sp_GetDataRequestsByOrganization
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 72
+ClientConnectionId:dadd5a28-0753-4787-8be7-b3c27c779b83
+Error Number:-2,State:0,Class:11
+2026-01-19 18:59:56.990 +05:30 [ERR] Error getting data requests for organization "d97fe50d-9bfc-4ae6-b188-e288d6233f95"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 72
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 23
+ClientConnectionId:dadd5a28-0753-4787-8be7-b3c27c779b83
+Error Number:-2,State:0,Class:11
+2026-01-19 18:59:58.343 +05:30 [ERR] Error getting data requests for organization "d97fe50d-9bfc-4ae6-b188-e288d6233f95"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 72
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 23
+   at Kanini.Application.Services.DataRequests.DataRequestService.GetRequestsByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\DataRequests\DataRequestService.cs:line 85
+ClientConnectionId:dadd5a28-0753-4787-8be7-b3c27c779b83
+Error Number:-2,State:0,Class:11

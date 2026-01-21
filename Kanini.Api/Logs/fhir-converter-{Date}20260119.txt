@@ -1,0 +1,813 @@
+2026-01-19 11:16:29 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-19 11:16:29 [INF] Now listening on: http://localhost:5201
+2026-01-19 11:16:29 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-19 11:16:29 [INF] Hosting environment: Development
+2026-01-19 11:16:29 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-19 11:18:18 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-19 11:18:18 [WRN] Failed to determine the https port for redirect.
+2026-01-19 11:18:18 [INF] CORS policy execution successful.
+2026-01-19 11:18:18 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 268.4654ms
+2026-01-19 11:18:18 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 67
+2026-01-19 11:18:18 [INF] CORS policy execution successful.
+2026-01-19 11:18:19 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 11:18:19 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-19 11:18:20 [INF] Login attempt started for email: sujithkumar.kanini@outlook.com
+2026-01-19 11:18:23 [WRN] There are multiple relationships between 'DataRequest' and 'Organization' without configured foreign key properties. This will cause Entity Framework to create shadow properties on 'DataRequest' with names dependent on the discovery order. Consider configuring the foreign key properties using the [ForeignKey] attribute or in 'OnModelCreating'.
+2026-01-19 11:18:24 [WRN] The foreign key property 'DataRequest.OrganizationId1' was created in shadow state because a conflicting property with the simple name 'OrganizationId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-01-19 11:18:26 [INF] Executed DbCommand (30ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-19 11:18:26 [INF] Login completed successfully for email: sujithkumar.kanini@outlook.com, UserId: "908cc836-0cf6-4d22-b38f-08de4d1e4daf"
+2026-01-19 11:18:26 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-19 11:18:26 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 7783.0304ms
+2026-01-19 11:18:26 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 11:18:27 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 8222.8713ms
+2026-01-19 11:18:30 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:18:30 [INF] CORS policy execution successful.
+2026-01-19 11:18:30 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:30 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:18:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:18:30 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 338.2367ms
+2026-01-19 11:18:30 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:30 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 800.2666ms
+2026-01-19 11:18:36 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:18:36 [INF] CORS policy execution successful.
+2026-01-19 11:18:36 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:36 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:18:36 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:18:36 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 32.6482ms
+2026-01-19 11:18:36 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:36 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 160.5544ms
+2026-01-19 11:18:37 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:18:37 [INF] CORS policy execution successful.
+2026-01-19 11:18:37 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:37 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:18:37 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:18:37 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 38.3609ms
+2026-01-19 11:18:37 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:37 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 99.2244ms
+2026-01-19 11:18:38 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/patients - null null
+2026-01-19 11:18:38 [INF] CORS policy execution successful.
+2026-01-19 11:18:38 [INF] Executing endpoint 'Kanini.Api.Controllers.PatientsController.GetAllPatients (Kanini.Api)'
+2026-01-19 11:18:38 [INF] Route matched with {action = "GetAllPatients", controller = "Patients"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPatients() on controller Kanini.Api.Controllers.PatientsController (Kanini.Api).
+2026-01-19 11:18:38 [INF] Getting all patients
+2026-01-19 11:18:38 [INF] Getting all patients
+2026-01-19 11:18:38 [INF] Retrieved 1 patients
+2026-01-19 11:18:38 [INF] Retrieved 1 patients
+2026-01-19 11:18:38 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.Patients.PatientResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:18:38 [INF] Executed action Kanini.Api.Controllers.PatientsController.GetAllPatients (Kanini.Api) in 111.4054ms
+2026-01-19 11:18:38 [INF] Executed endpoint 'Kanini.Api.Controllers.PatientsController.GetAllPatients (Kanini.Api)'
+2026-01-19 11:18:38 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/patients - 200 null application/json; charset=utf-8 197.0663ms
+2026-01-19 11:18:47 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests - null null
+2026-01-19 11:18:47 [INF] CORS policy execution successful.
+2026-01-19 11:18:47 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests - 204 null null 24.7063ms
+2026-01-19 11:18:47 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/data-requests - application/json 142
+2026-01-19 11:18:47 [INF] CORS policy execution successful.
+2026-01-19 11:18:47 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.CreateRequest (Kanini.Api)'
+2026-01-19 11:18:47 [INF] Route matched with {action = "CreateRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRequest(Kanini.Application.DTOs.DataRequests.CreateDataRequestDto) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:18:47 [INF] Data request creation started for GlobalPatientId: "b2faadec-73ee-45a9-90fa-fffbf125ec50"
+2026-01-19 11:18:48 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Guid), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 1000), @p8='?' (DbType = Guid), @p9='?' (DbType = Guid), @p10='?' (DbType = Guid), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Int32), @p14='?' (Size = 100), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DataRequests] ([RequestId], [ApprovedAt], [ApprovedByUserId], [CreatedBy], [CreatedOn], [ExpiresAt], [GlobalPatientId], [Notes], [OrganizationId], [OrganizationId1], [RequestingOrganizationId], [RequestingUserId], [SourceOrganizationId], [Status], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-01-19 11:18:48 [INF] Data request created successfully with ID: "1a4b82a0-2d75-4cca-8d10-84ce8c6efe64"
+2026-01-19 11:18:48 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 11:18:48 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.CreateRequest (Kanini.Api) in 677.0994ms
+2026-01-19 11:18:48 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.CreateRequest (Kanini.Api)'
+2026-01-19 11:18:48 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/data-requests - 200 null application/json; charset=utf-8 792.5093ms
+2026-01-19 11:18:48 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:18:48 [INF] CORS policy execution successful.
+2026-01-19 11:18:48 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:48 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:18:48 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:18:48 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 14.4039ms
+2026-01-19 11:18:48 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:18:48 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 70.3386ms
+2026-01-19 11:18:52 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - null null
+2026-01-19 11:18:52 [INF] CORS policy execution successful.
+2026-01-19 11:18:52 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 11:18:52 [INF] Route matched with {action = "GetRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequest(System.Guid) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:18:52 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 11:18:52 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api) in 15.094ms
+2026-01-19 11:18:52 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 11:18:52 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - 200 null application/json; charset=utf-8 105.6671ms
+2026-01-19 11:19:22 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-19 11:19:22 [INF] CORS policy execution successful.
+2026-01-19 11:19:22 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 57.4108ms
+2026-01-19 11:19:22 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 74
+2026-01-19 11:19:22 [INF] CORS policy execution successful.
+2026-01-19 11:19:22 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 11:19:23 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-19 11:19:23 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-19 11:19:23 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-19 11:19:23 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 57.0098ms
+2026-01-19 11:19:23 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 11:19:23 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 400 null application/json; charset=utf-8 579.8026ms
+2026-01-19 11:19:37 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-19 11:19:37 [INF] CORS policy execution successful.
+2026-01-19 11:19:37 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 29.9687ms
+2026-01-19 11:19:37 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-19 11:19:37 [INF] CORS policy execution successful.
+2026-01-19 11:19:37 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 11:19:37 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-19 11:19:37 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-19 11:19:37 [INF] Executed DbCommand (3ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-19 11:19:37 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: "b0dc6191-7157-4876-56ef-08de4d169e36"
+2026-01-19 11:19:37 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-19 11:19:37 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 144.2403ms
+2026-01-19 11:19:37 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 11:19:37 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 215.335ms
+2026-01-19 11:19:40 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:19:40 [INF] CORS policy execution successful.
+2026-01-19 11:19:40 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:19:40 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:19:40 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:19:40 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 8.2633ms
+2026-01-19 11:19:40 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:19:40 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 74.6478ms
+2026-01-19 11:19:42 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:19:42 [INF] CORS policy execution successful.
+2026-01-19 11:19:42 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:19:42 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:19:42 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:19:42 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 11.1569ms
+2026-01-19 11:19:42 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:19:42 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 49.4889ms
+2026-01-19 11:20:12 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:20:12 [INF] CORS policy execution successful.
+2026-01-19 11:20:12 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:12 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:12 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:20:12 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 15.9591ms
+2026-01-19 11:20:12 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:12 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 92.9602ms
+2026-01-19 11:20:42 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:20:42 [INF] CORS policy execution successful.
+2026-01-19 11:20:42 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:42 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:42 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:20:42 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.4777ms
+2026-01-19 11:20:42 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:42 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 68.7861ms
+2026-01-19 11:20:43 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:20:43 [INF] CORS policy execution successful.
+2026-01-19 11:20:43 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:43 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:43 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:20:43 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 15.0301ms
+2026-01-19 11:20:43 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:43 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 64.962ms
+2026-01-19 11:20:48 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:20:48 [INF] CORS policy execution successful.
+2026-01-19 11:20:48 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:48 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:48 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:20:48 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 15.2296ms
+2026-01-19 11:20:48 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:48 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 70.5663ms
+2026-01-19 11:20:48 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:20:48 [INF] CORS policy execution successful.
+2026-01-19 11:20:49 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:49 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:49 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:20:49 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 39.9318ms
+2026-01-19 11:20:49 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:20:49 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 160.1092ms
+2026-01-19 11:20:54 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - null null
+2026-01-19 11:20:54 [INF] CORS policy execution successful.
+2026-01-19 11:20:54 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 11:20:54 [INF] Route matched with {action = "GetRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequest(System.Guid) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:54 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 11:20:54 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api) in 13.4773ms
+2026-01-19 11:20:54 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 11:20:54 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - 200 null application/json; charset=utf-8 151.5137ms
+2026-01-19 11:20:56 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64/approve - null null
+2026-01-19 11:20:56 [INF] CORS policy execution successful.
+2026-01-19 11:20:56 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64/approve - 204 null null 11.4759ms
+2026-01-19 11:20:56 [INF] Request starting HTTP/1.1 PUT http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64/approve - application/json 56
+2026-01-19 11:20:56 [INF] CORS policy execution successful.
+2026-01-19 11:20:56 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.ApproveRequest (Kanini.Api)'
+2026-01-19 11:20:56 [INF] Route matched with {action = "ApproveRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ApproveRequest(System.Guid, Kanini.Application.DTOs.DataRequests.ApproveDataRequestDto) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:20:56 [INF] Data request approval started for RequestId: "1a4b82a0-2d75-4cca-8d10-84ce8c6efe64"
+2026-01-19 11:20:57 [INF] Executed DbCommand (7ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[RequestId], [d].[ApprovedAt], [d].[ApprovedByUserId], [d].[CreatedBy], [d].[CreatedOn], [d].[ExpiresAt], [d].[GlobalPatientId], [d].[Notes], [d].[OrganizationId], [d].[OrganizationId1], [d].[RequestingOrganizationId], [d].[RequestingUserId], [d].[SourceOrganizationId], [d].[Status], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [DataRequests] AS [d]
+WHERE [d].[RequestId] = @p
+2026-01-19 11:20:58 [INF] Executed DbCommand (10ms) [Parameters=[@p6='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Guid), @p2='?' (Size = 1000), @p3='?' (DbType = Int32), @p4='?' (Size = 100), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [DataRequests] SET [ApprovedAt] = @p0, [ApprovedByUserId] = @p1, [Notes] = @p2, [Status] = @p3, [UpdatedBy] = @p4, [UpdatedOn] = @p5
+OUTPUT 1
+WHERE [RequestId] = @p6;
+2026-01-19 11:20:58 [INF] Data request approved successfully for RequestId: "1a4b82a0-2d75-4cca-8d10-84ce8c6efe64"
+2026-01-19 11:20:58 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 11:20:58 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.ApproveRequest (Kanini.Api) in 1332.8585ms
+2026-01-19 11:20:58 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.ApproveRequest (Kanini.Api)'
+2026-01-19 11:20:58 [INF] Request finished HTTP/1.1 PUT http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64/approve - 200 null application/json; charset=utf-8 1639.5126ms
+2026-01-19 11:21:02 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:21:02 [INF] CORS policy execution successful.
+2026-01-19 11:21:02 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:21:02 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:21:02 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:21:02 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.4667ms
+2026-01-19 11:21:02 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:21:02 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 67.6278ms
+2026-01-19 11:21:03 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:21:03 [INF] CORS policy execution successful.
+2026-01-19 11:21:03 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:21:03 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:21:03 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:21:03 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.5423ms
+2026-01-19 11:21:03 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:21:03 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 90.5308ms
+2026-01-19 11:21:05 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - null null
+2026-01-19 11:21:05 [INF] CORS policy execution successful.
+2026-01-19 11:21:05 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 11:21:05 [INF] Route matched with {action = "GetRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequest(System.Guid) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:21:05 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 11:21:05 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api) in 7.1849ms
+2026-01-19 11:21:05 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 11:21:05 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - 200 null application/json; charset=utf-8 52.0842ms
+2026-01-19 11:23:16 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/files/upload?requestId=1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - multipart/form-data; boundary=----WebKitFormBoundaryvlvP4cn9Y7YhV14N 982
+2026-01-19 11:23:16 [INF] CORS policy execution successful.
+2026-01-19 11:23:16 [INF] Executing endpoint 'Kanini.Api.Controllers.FilesController.UploadFile (Kanini.Api)'
+2026-01-19 11:23:16 [INF] Route matched with {action = "UploadFile", controller = "Files"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadFile(Microsoft.AspNetCore.Http.IFormFile, System.Nullable`1[System.Guid]) on controller Kanini.Api.Controllers.FilesController (Kanini.Api).
+2026-01-19 11:23:16 [INF] File upload started: sample_patient_data.csv, Size: 787
+2026-01-19 11:23:16 [INF] File upload completed: "d616ce71-62c4-475d-b835-fa4d09819a89", Path: C:\Users\maste\AppData\Local\Temp\TempUploads\d616ce71-62c4-475d-b835-fa4d09819a89_sample_patient_data.csv
+2026-01-19 11:23:16 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Files.FileUploadResponseDto'.
+2026-01-19 11:23:17 [INF] Executed action Kanini.Api.Controllers.FilesController.UploadFile (Kanini.Api) in 161.6327ms
+2026-01-19 11:23:17 [INF] Executed endpoint 'Kanini.Api.Controllers.FilesController.UploadFile (Kanini.Api)'
+2026-01-19 11:23:17 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/files/upload?requestId=1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - 200 null application/json; charset=utf-8 234.8022ms
+2026-01-19 11:23:19 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/d616ce71-62c4-475d-b835-fa4d09819a89/detect-fields - null null
+2026-01-19 11:23:19 [INF] CORS policy execution successful.
+2026-01-19 11:23:19 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/d616ce71-62c4-475d-b835-fa4d09819a89/detect-fields - 204 null null 28.3215ms
+2026-01-19 11:23:19 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/d616ce71-62c4-475d-b835-fa4d09819a89/detect-fields - null null
+2026-01-19 11:23:19 [INF] CORS policy execution successful.
+2026-01-19 11:23:19 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.DetectFields (Kanini.Api)'
+2026-01-19 11:23:19 [INF] Route matched with {action = "DetectFields", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DetectFields(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:20 [INF] Field mapping detected for FileId: "d616ce71-62c4-475d-b835-fa4d09819a89", Detected: 0 fields
+2026-01-19 11:23:20 [INF] Field mapping detected for FileId: "d616ce71-62c4-475d-b835-fa4d09819a89", Detected: 10 fields
+2026-01-19 11:23:20 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.FieldDetectionResponseDto'.
+2026-01-19 11:23:20 [INF] Executed action Kanini.Api.Controllers.ConversionController.DetectFields (Kanini.Api) in 864.96ms
+2026-01-19 11:23:20 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.DetectFields (Kanini.Api)'
+2026-01-19 11:23:20 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/d616ce71-62c4-475d-b835-fa4d09819a89/detect-fields - 200 null application/json; charset=utf-8 955.602ms
+2026-01-19 11:23:44 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/start - null null
+2026-01-19 11:23:44 [INF] CORS policy execution successful.
+2026-01-19 11:23:44 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/start - 204 null null 22.1471ms
+2026-01-19 11:23:44 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/convert/start - application/json 869
+2026-01-19 11:23:44 [INF] CORS policy execution successful.
+2026-01-19 11:23:44 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.StartConversion (Kanini.Api)'
+2026-01-19 11:23:44 [INF] Route matched with {action = "StartConversion", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartConversion(Kanini.Application.DTOs.Conversion.StartConversionRequestDto) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:44 [INF] Starting conversion for FileId: "d616ce71-62c4-475d-b835-fa4d09819a89"
+2026-01-19 11:23:44 [INF] Executed DbCommand (7ms) [Parameters=[@8__locals1_userId='?' (DbType = Guid), @ToString_contains='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[UserId] = @8__locals1_userId AND [c].[Status] = 1 AND [c].[OriginalFileName] IS NOT NULL AND [c].[OriginalFileName] LIKE @ToString_contains ESCAPE N'\'
+2026-01-19 11:23:44 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 100), @p3='?' (DbType = DateTime2), @p4='?' (Size = 2000), @p5='?' (DbType = Int64), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 200), @p9='?' (DbType = Int32), @p10='?' (DbType = Int64), @p11='?' (DbType = Guid), @p12='?' (DbType = Int32), @p13='?' (Size = 100), @p14='?' (DbType = DateTime2), @p15='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ConversionJobs] ([JobId], [CompletedAt], [CreatedBy], [CreatedOn], [ErrorMessage], [FileSizeBytes], [InputFormat], [ObservationsCount], [OriginalFileName], [PatientsCount], [ProcessingTimeMs], [RequestId], [Status], [UpdatedBy], [UpdatedOn], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-01-19 11:23:44 [INF] Background conversion task started for JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027"
+2026-01-19 11:23:44 [INF] Conversion job created - FileId: "d616ce71-62c4-475d-b835-fa4d09819a89", JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027"
+2026-01-19 11:23:44 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.ConversionStatusResponseDto'.
+2026-01-19 11:23:44 [INF] Starting conversion process for JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027"
+2026-01-19 11:23:44 [INF] Executed action Kanini.Api.Controllers.ConversionController.StartConversion (Kanini.Api) in 511.5706ms
+2026-01-19 11:23:44 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.StartConversion (Kanini.Api)'
+2026-01-19 11:23:45 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/convert/start - 200 null application/json; charset=utf-8 624.0606ms
+2026-01-19 11:23:45 [INF] Executed DbCommand (5ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:23:45 [INF] Processing file: C:\Users\maste\AppData\Local\Temp\TempUploads\d616ce71-62c4-475d-b835-fa4d09819a89_sample_patient_data.csv for JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027"
+2026-01-19 11:23:45 [INF] Parsed 1 patient and 5 observations for JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027"
+2026-01-19 11:23:47 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:47 [INF] CORS policy execution successful.
+2026-01-19 11:23:47 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 204 null null 21.4412ms
+2026-01-19 11:23:47 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:47 [INF] CORS policy execution successful.
+2026-01-19 11:23:47 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:47 [INF] Route matched with {action = "GetConversionStatus", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetConversionStatus(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:47 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:23:47 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.ConversionStatusResponseDto'.
+2026-01-19 11:23:47 [INF] Executed action Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api) in 68.9087ms
+2026-01-19 11:23:47 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:47 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 200 null application/json; charset=utf-8 177.3315ms
+2026-01-19 11:23:48 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:23:49 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:49 [INF] CORS policy execution successful.
+2026-01-19 11:23:49 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:49 [INF] Route matched with {action = "GetConversionStatus", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetConversionStatus(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:49 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:23:49 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.ConversionStatusResponseDto'.
+2026-01-19 11:23:49 [INF] Executed action Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api) in 44.9563ms
+2026-01-19 11:23:49 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:49 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 200 null application/json; charset=utf-8 112.9871ms
+2026-01-19 11:23:49 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:23:49 [WRN] No UCUM mapping found for unit: '10^3/uL', using as-is
+2026-01-19 11:23:50 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:23:50 [WRN] No UCUM mapping found for unit: '10^3/uL', using as-is
+2026-01-19 11:23:51 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:51 [INF] CORS policy execution successful.
+2026-01-19 11:23:51 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:23:51 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:51 [INF] Route matched with {action = "GetConversionStatus", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetConversionStatus(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:51 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:23:51 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.ConversionStatusResponseDto'.
+2026-01-19 11:23:51 [INF] Executed action Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api) in 49.4919ms
+2026-01-19 11:23:51 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:51 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 200 null application/json; charset=utf-8 335.9261ms
+2026-01-19 11:23:51 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:23:51 [INF] Executed DbCommand (8ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int64), @p4='?' (DbType = Int32), @p5='?' (Size = 100), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [ConversionJobs] SET [CompletedAt] = @p0, [ObservationsCount] = @p1, [PatientsCount] = @p2, [ProcessingTimeMs] = @p3, [Status] = @p4, [UpdatedBy] = @p5, [UpdatedOn] = @p6
+OUTPUT 1
+WHERE [JobId] = @p7;
+2026-01-19 11:23:51 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[RequestId], [d].[ApprovedAt], [d].[ApprovedByUserId], [d].[CreatedBy], [d].[CreatedOn], [d].[ExpiresAt], [d].[GlobalPatientId], [d].[Notes], [d].[OrganizationId], [d].[OrganizationId1], [d].[RequestingOrganizationId], [d].[RequestingUserId], [d].[SourceOrganizationId], [d].[Status], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [DataRequests] AS [d]
+WHERE [d].[RequestId] = @p
+2026-01-19 11:23:51 [INF] Executed DbCommand (6ms) [Parameters=[@p3='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 100), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [DataRequests] SET [Status] = @p0, [UpdatedBy] = @p1, [UpdatedOn] = @p2
+OUTPUT 1
+WHERE [RequestId] = @p3;
+2026-01-19 11:23:51 [INF] DataRequest "1a4b82a0-2d75-4cca-8d10-84ce8c6efe64" marked as DataReady
+2026-01-19 11:23:51 [INF] Conversion completed for JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027", Patients: 1, Observations: 5
+2026-01-19 11:23:53 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:53 [INF] CORS policy execution successful.
+2026-01-19 11:23:53 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 204 null null 19.3095ms
+2026-01-19 11:23:53 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:53 [INF] CORS policy execution successful.
+2026-01-19 11:23:53 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:53 [INF] Route matched with {action = "GetConversionStatus", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetConversionStatus(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:53 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:23:53 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.ConversionStatusResponseDto'.
+2026-01-19 11:23:53 [INF] Executed action Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api) in 34.7258ms
+2026-01-19 11:23:53 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionStatus (Kanini.Api)'
+2026-01-19 11:23:53 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/status/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 200 null application/json; charset=utf-8 107.308ms
+2026-01-19 11:23:53 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/preview/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:53 [INF] CORS policy execution successful.
+2026-01-19 11:23:53 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/preview/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 204 null null 34.0564ms
+2026-01-19 11:23:53 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/preview/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:23:53 [INF] CORS policy execution successful.
+2026-01-19 11:23:53 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.GetFhirPreview (Kanini.Api)'
+2026-01-19 11:23:53 [INF] Route matched with {action = "GetFhirPreview", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFhirPreview(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:23:53 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:23:53 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.FhirBundlePreviewDto'.
+2026-01-19 11:23:53 [INF] Executed action Kanini.Api.Controllers.ConversionController.GetFhirPreview (Kanini.Api) in 46.3301ms
+2026-01-19 11:23:53 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.GetFhirPreview (Kanini.Api)'
+2026-01-19 11:23:53 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/preview/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 200 null application/json; charset=utf-8 141.7347ms
+2026-01-19 11:24:08 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:24:08 [INF] CORS policy execution successful.
+2026-01-19 11:24:08 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:24:08 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:24:08 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:24:08 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 19.2901ms
+2026-01-19 11:24:08 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:24:08 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 96.4356ms
+2026-01-19 11:24:11 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/by-request/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - null null
+2026-01-19 11:24:11 [INF] CORS policy execution successful.
+2026-01-19 11:24:11 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/by-request/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - 204 null null 13.6738ms
+2026-01-19 11:24:11 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/by-request/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - null null
+2026-01-19 11:24:11 [INF] CORS policy execution successful.
+2026-01-19 11:24:11 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionByRequestId (Kanini.Api)'
+2026-01-19 11:24:11 [INF] Route matched with {action = "GetConversionByRequestId", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetConversionByRequestId(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:24:11 [INF] Executed DbCommand (5ms) [Parameters=[@requestId='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[RequestId] = @requestId
+2026-01-19 11:24:11 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.ConversionStatusResponseDto'.
+2026-01-19 11:24:11 [INF] Executed action Kanini.Api.Controllers.ConversionController.GetConversionByRequestId (Kanini.Api) in 72.3477ms
+2026-01-19 11:24:11 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.GetConversionByRequestId (Kanini.Api)'
+2026-01-19 11:24:11 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/by-request/1a4b82a0-2d75-4cca-8d10-84ce8c6efe64 - 200 null application/json; charset=utf-8 167.2612ms
+2026-01-19 11:24:11 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/download/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - null null
+2026-01-19 11:24:11 [INF] CORS policy execution successful.
+2026-01-19 11:24:11 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.DownloadFhirBundle (Kanini.Api)'
+2026-01-19 11:24:11 [INF] Route matched with {action = "DownloadFhirBundle", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DownloadFhirBundle(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 11:24:11 [INF] Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[JobId], [c].[CompletedAt], [c].[CreatedBy], [c].[CreatedOn], [c].[ErrorMessage], [c].[FileSizeBytes], [c].[InputFormat], [c].[ObservationsCount], [c].[OriginalFileName], [c].[PatientsCount], [c].[ProcessingTimeMs], [c].[RequestId], [c].[Status], [c].[UpdatedBy], [c].[UpdatedOn], [c].[UserId]
+FROM [ConversionJobs] AS [c]
+WHERE [c].[JobId] = @p
+2026-01-19 11:24:13 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:24:13 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:24:13 [WRN] No UCUM mapping found for unit: '10^3/uL', using as-is
+2026-01-19 11:24:14 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:24:14 [WRN] No UCUM mapping found for unit: '10^3/uL', using as-is
+2026-01-19 11:24:14 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:24:15 [WRN] No LOINC mapping found for test name: '62701', using text fallback
+2026-01-19 11:24:15 [INF] Created FHIR Bundle with 1 Patient and 5 Observations
+2026-01-19 11:24:16 [INF] Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[RequestId], [d].[ApprovedAt], [d].[ApprovedByUserId], [d].[CreatedBy], [d].[CreatedOn], [d].[ExpiresAt], [d].[GlobalPatientId], [d].[Notes], [d].[OrganizationId], [d].[OrganizationId1], [d].[RequestingOrganizationId], [d].[RequestingUserId], [d].[SourceOrganizationId], [d].[Status], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [DataRequests] AS [d]
+WHERE [d].[RequestId] = @p
+2026-01-19 11:24:16 [INF] Executed DbCommand (12ms) [Parameters=[@p2='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [DataRequests] SET [Status] = @p0, [UpdatedOn] = @p1
+OUTPUT 1
+WHERE [RequestId] = @p2;
+2026-01-19 11:24:16 [INF] DataRequest "1a4b82a0-2d75-4cca-8d10-84ce8c6efe64" marked as completed
+2026-01-19 11:24:16 [INF] FHIR bundle generated for JobId: "cffc4163-bdbd-4ef9-86d6-cd8f6b310027", Size: 2919 bytes
+2026-01-19 11:24:16 [INF] Executing FileContentResult, sending file with download name 'fhir-bundle-cffc4163-bdbd-4ef9-86d6-cd8f6b310027.json' ...
+2026-01-19 11:24:16 [INF] Executed action Kanini.Api.Controllers.ConversionController.DownloadFhirBundle (Kanini.Api) in 4409.6883ms
+2026-01-19 11:24:16 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.DownloadFhirBundle (Kanini.Api)'
+2026-01-19 11:24:16 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/download/cffc4163-bdbd-4ef9-86d6-cd8f6b310027 - 200 2919 application/json 4480.6081ms
+2026-01-19 11:24:16 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:24:16 [INF] CORS policy execution successful.
+2026-01-19 11:24:16 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:24:16 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:24:16 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:24:16 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 9.1836ms
+2026-01-19 11:24:16 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:24:16 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 57.7624ms
+2026-01-19 11:24:38 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:24:38 [INF] CORS policy execution successful.
+2026-01-19 11:24:38 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:24:38 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:24:38 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:24:38 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 9.9621ms
+2026-01-19 11:24:38 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:24:38 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 123.5034ms
+2026-01-19 11:25:08 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:25:08 [INF] CORS policy execution successful.
+2026-01-19 11:25:08 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:25:08 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:25:08 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:25:08 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 11.9137ms
+2026-01-19 11:25:08 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:25:08 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 54.194ms
+2026-01-19 11:25:15 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:25:15 [INF] CORS policy execution successful.
+2026-01-19 11:25:15 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:25:15 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:25:15 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:25:15 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 13.5944ms
+2026-01-19 11:25:15 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:25:15 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 67.8903ms
+2026-01-19 11:25:45 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:25:45 [INF] CORS policy execution successful.
+2026-01-19 11:25:45 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:25:45 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:25:45 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:25:45 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 8.3325ms
+2026-01-19 11:25:45 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:25:45 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 51.0082ms
+2026-01-19 11:26:15 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:26:15 [INF] CORS policy execution successful.
+2026-01-19 11:26:15 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:15 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:26:15 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:26:15 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 14.7173ms
+2026-01-19 11:26:15 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:15 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 84.0255ms
+2026-01-19 11:26:16 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:26:16 [INF] CORS policy execution successful.
+2026-01-19 11:26:16 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:16 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:26:16 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:26:16 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.814ms
+2026-01-19 11:26:16 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:16 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 61.6931ms
+2026-01-19 11:26:46 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 11:26:46 [INF] CORS policy execution successful.
+2026-01-19 11:26:46 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:46 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:26:46 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:26:46 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.1741ms
+2026-01-19 11:26:46 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:46 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 59.0189ms
+2026-01-19 11:26:58 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 11:26:58 [INF] CORS policy execution successful.
+2026-01-19 11:26:58 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:58 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 11:26:58 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 11:26:58 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 32.0788ms
+2026-01-19 11:26:58 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 11:26:58 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 104.7148ms
+2026-01-19 11:41:59 [INF] Application is shutting down...
+2026-01-19 15:02:36 [INF] User profile is available. Using 'C:\Users\maste\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-19 15:02:36 [INF] Now listening on: http://localhost:5201
+2026-01-19 15:02:36 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-19 15:02:36 [INF] Hosting environment: Development
+2026-01-19 15:02:36 [INF] Content root path: C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Api
+2026-01-19 15:02:59 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-19 15:02:59 [WRN] Failed to determine the https port for redirect.
+2026-01-19 15:02:59 [INF] CORS policy execution successful.
+2026-01-19 15:02:59 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 222.1197ms
+2026-01-19 15:02:59 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 73
+2026-01-19 15:03:00 [INF] CORS policy execution successful.
+2026-01-19 15:03:00 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 15:03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-19 15:03:01 [INF] Login attempt started for email: sujithkumarsenthilkumar777@gmail.com
+2026-01-19 15:03:04 [WRN] There are multiple relationships between 'DataRequest' and 'Organization' without configured foreign key properties. This will cause Entity Framework to create shadow properties on 'DataRequest' with names dependent on the discovery order. Consider configuring the foreign key properties using the [ForeignKey] attribute or in 'OnModelCreating'.
+2026-01-19 15:03:05 [WRN] The foreign key property 'DataRequest.OrganizationId1' was created in shadow state because a conflicting property with the simple name 'OrganizationId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2026-01-19 15:03:07 [INF] Executed DbCommand (32ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-19 15:03:07 [INF] Login completed successfully for email: sujithkumarsenthilkumar777@gmail.com, UserId: "b0dc6191-7157-4876-56ef-08de4d169e36"
+2026-01-19 15:03:07 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-19 15:03:07 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 6832.9587ms
+2026-01-19 15:03:07 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 15:03:07 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 7483.2905ms
+2026-01-19 15:03:56 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - null null
+2026-01-19 15:03:56 [INF] CORS policy execution successful.
+2026-01-19 15:03:56 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/auth/login - 204 null null 23.9314ms
+2026-01-19 15:03:56 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/auth/login - application/json 67
+2026-01-19 15:03:56 [INF] CORS policy execution successful.
+2026-01-19 15:03:56 [INF] Executing endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 15:03:56 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Kanini.Application.DTOs.Auth.LoginRequestDto) on controller Kanini.Api.Controllers.AuthController (Kanini.Api).
+2026-01-19 15:03:56 [INF] Login attempt started for email: sujithkumar.kanini@outlook.com
+2026-01-19 15:03:56 [INF] Executed DbCommand (11ms) [Parameters=[@p10='?' (DbType = Guid), @p0='?' (Size = 100), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (DbType = Guid), @p6='?' (Size = 256), @p7='?' (DbType = Int32), @p8='?' (Size = 100), @p9='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [Email] = @p2, [IsActive] = @p3, [LastLogin] = @p4, [OrganizationId] = @p5, [PasswordHash] = @p6, [Role] = @p7, [UpdatedBy] = @p8, [UpdatedOn] = @p9
+OUTPUT 1
+WHERE [UserId] = @p10;
+2026-01-19 15:03:56 [INF] Login completed successfully for email: sujithkumar.kanini@outlook.com, UserId: "908cc836-0cf6-4d22-b38f-08de4d1e4daf"
+2026-01-19 15:03:56 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Auth.LoginResponseDto'.
+2026-01-19 15:03:56 [INF] Executed action Kanini.Api.Controllers.AuthController.Login (Kanini.Api) in 323.2609ms
+2026-01-19 15:03:56 [INF] Executed endpoint 'Kanini.Api.Controllers.AuthController.Login (Kanini.Api)'
+2026-01-19 15:03:56 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/auth/login - 200 null application/json; charset=utf-8 401.0511ms
+2026-01-19 15:03:59 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:03:59 [INF] CORS policy execution successful.
+2026-01-19 15:03:59 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:03:59 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:03:59 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:03:59 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 233.3678ms
+2026-01-19 15:03:59 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:03:59 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 345.2048ms
+2026-01-19 15:04:01 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/patients - null null
+2026-01-19 15:04:01 [INF] CORS policy execution successful.
+2026-01-19 15:04:01 [INF] Executing endpoint 'Kanini.Api.Controllers.PatientsController.GetAllPatients (Kanini.Api)'
+2026-01-19 15:04:01 [INF] Route matched with {action = "GetAllPatients", controller = "Patients"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPatients() on controller Kanini.Api.Controllers.PatientsController (Kanini.Api).
+2026-01-19 15:04:01 [INF] Getting all patients
+2026-01-19 15:04:01 [INF] Getting all patients
+2026-01-19 15:04:01 [INF] Retrieved 1 patients
+2026-01-19 15:04:01 [INF] Retrieved 1 patients
+2026-01-19 15:04:01 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.Patients.PatientResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:04:01 [INF] Executed action Kanini.Api.Controllers.PatientsController.GetAllPatients (Kanini.Api) in 117.8969ms
+2026-01-19 15:04:01 [INF] Executed endpoint 'Kanini.Api.Controllers.PatientsController.GetAllPatients (Kanini.Api)'
+2026-01-19 15:04:01 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/patients - 200 null application/json; charset=utf-8 228.2892ms
+2026-01-19 15:04:06 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests - null null
+2026-01-19 15:04:06 [INF] CORS policy execution successful.
+2026-01-19 15:04:06 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests - 204 null null 21.4056ms
+2026-01-19 15:04:06 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/data-requests - application/json 133
+2026-01-19 15:04:06 [INF] CORS policy execution successful.
+2026-01-19 15:04:06 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.CreateRequest (Kanini.Api)'
+2026-01-19 15:04:06 [INF] Route matched with {action = "CreateRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateRequest(Kanini.Application.DTOs.DataRequests.CreateDataRequestDto) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:06 [INF] Data request creation started for GlobalPatientId: "b2faadec-73ee-45a9-90fa-fffbf125ec50"
+2026-01-19 15:04:06 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Guid), @p3='?' (Size = 100), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 1000), @p8='?' (DbType = Guid), @p9='?' (DbType = Guid), @p10='?' (DbType = Guid), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Int32), @p14='?' (Size = 100), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DataRequests] ([RequestId], [ApprovedAt], [ApprovedByUserId], [CreatedBy], [CreatedOn], [ExpiresAt], [GlobalPatientId], [Notes], [OrganizationId], [OrganizationId1], [RequestingOrganizationId], [RequestingUserId], [SourceOrganizationId], [Status], [UpdatedBy], [UpdatedOn])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-01-19 15:04:06 [INF] Data request created successfully with ID: "43eb1bd2-8c72-402e-aa26-2c2a6574ae8b"
+2026-01-19 15:04:06 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 15:04:06 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.CreateRequest (Kanini.Api) in 439.0836ms
+2026-01-19 15:04:06 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.CreateRequest (Kanini.Api)'
+2026-01-19 15:04:06 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/data-requests - 200 null application/json; charset=utf-8 551.7216ms
+2026-01-19 15:04:06 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:04:06 [INF] CORS policy execution successful.
+2026-01-19 15:04:06 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:06 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:07 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:04:07 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 35.0634ms
+2026-01-19 15:04:07 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:07 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 88.9087ms
+2026-01-19 15:04:17 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:04:17 [INF] CORS policy execution successful.
+2026-01-19 15:04:17 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:17 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:17 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:04:17 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.6152ms
+2026-01-19 15:04:17 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:17 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 108.732ms
+2026-01-19 15:04:19 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - null null
+2026-01-19 15:04:19 [INF] CORS policy execution successful.
+2026-01-19 15:04:19 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:19 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:19 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:04:19 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 39.1947ms
+2026-01-19 15:04:19 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:19 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=false - 200 null application/json; charset=utf-8 98.1885ms
+2026-01-19 15:04:22 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests/43eb1bd2-8c72-402e-aa26-2c2a6574ae8b - null null
+2026-01-19 15:04:22 [INF] CORS policy execution successful.
+2026-01-19 15:04:22 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 15:04:23 [INF] Route matched with {action = "GetRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequest(System.Guid) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:23 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 15:04:23 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api) in 33.0057ms
+2026-01-19 15:04:23 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequest (Kanini.Api)'
+2026-01-19 15:04:23 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests/43eb1bd2-8c72-402e-aa26-2c2a6574ae8b - 200 null application/json; charset=utf-8 104.7532ms
+2026-01-19 15:04:25 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests/43eb1bd2-8c72-402e-aa26-2c2a6574ae8b/approve - null null
+2026-01-19 15:04:25 [INF] CORS policy execution successful.
+2026-01-19 15:04:25 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/data-requests/43eb1bd2-8c72-402e-aa26-2c2a6574ae8b/approve - 204 null null 33.5337ms
+2026-01-19 15:04:25 [INF] Request starting HTTP/1.1 PUT http://localhost:5201/api/data-requests/43eb1bd2-8c72-402e-aa26-2c2a6574ae8b/approve - application/json 56
+2026-01-19 15:04:25 [INF] CORS policy execution successful.
+2026-01-19 15:04:25 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.ApproveRequest (Kanini.Api)'
+2026-01-19 15:04:25 [INF] Route matched with {action = "ApproveRequest", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ApproveRequest(System.Guid, Kanini.Application.DTOs.DataRequests.ApproveDataRequestDto) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:25 [INF] Data request approval started for RequestId: "43eb1bd2-8c72-402e-aa26-2c2a6574ae8b"
+2026-01-19 15:04:26 [INF] Executed DbCommand (4ms) [Parameters=[@p='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[RequestId], [d].[ApprovedAt], [d].[ApprovedByUserId], [d].[CreatedBy], [d].[CreatedOn], [d].[ExpiresAt], [d].[GlobalPatientId], [d].[Notes], [d].[OrganizationId], [d].[OrganizationId1], [d].[RequestingOrganizationId], [d].[RequestingUserId], [d].[SourceOrganizationId], [d].[Status], [d].[UpdatedBy], [d].[UpdatedOn]
+FROM [DataRequests] AS [d]
+WHERE [d].[RequestId] = @p
+2026-01-19 15:04:26 [INF] Executed DbCommand (11ms) [Parameters=[@p6='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Guid), @p2='?' (Size = 1000), @p3='?' (DbType = Int32), @p4='?' (Size = 100), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [DataRequests] SET [ApprovedAt] = @p0, [ApprovedByUserId] = @p1, [Notes] = @p2, [Status] = @p3, [UpdatedBy] = @p4, [UpdatedOn] = @p5
+OUTPUT 1
+WHERE [RequestId] = @p6;
+2026-01-19 15:04:26 [INF] Data request approved successfully for RequestId: "43eb1bd2-8c72-402e-aa26-2c2a6574ae8b"
+2026-01-19 15:04:26 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.DataRequests.DataRequestResponseDto'.
+2026-01-19 15:04:26 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.ApproveRequest (Kanini.Api) in 1215.9881ms
+2026-01-19 15:04:26 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.ApproveRequest (Kanini.Api)'
+2026-01-19 15:04:26 [INF] Request finished HTTP/1.1 PUT http://localhost:5201/api/data-requests/43eb1bd2-8c72-402e-aa26-2c2a6574ae8b/approve - 200 null application/json; charset=utf-8 1312.8798ms
+2026-01-19 15:04:37 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:04:37 [INF] CORS policy execution successful.
+2026-01-19 15:04:37 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:37 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:04:37 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:04:37 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 25.8991ms
+2026-01-19 15:04:37 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:04:37 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 72.8232ms
+2026-01-19 15:05:07 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:05:07 [INF] CORS policy execution successful.
+2026-01-19 15:05:07 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:05:07 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:05:07 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:05:07 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 19.6447ms
+2026-01-19 15:05:07 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:05:07 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 82.2336ms
+2026-01-19 15:05:08 [INF] Request starting HTTP/1.1 POST http://localhost:5201/api/files/upload?requestId=43eb1bd2-8c72-402e-aa26-2c2a6574ae8b - multipart/form-data; boundary=----WebKitFormBoundaryJRl6KnmEZ0AkypN6 982
+2026-01-19 15:05:08 [INF] CORS policy execution successful.
+2026-01-19 15:05:08 [INF] Executing endpoint 'Kanini.Api.Controllers.FilesController.UploadFile (Kanini.Api)'
+2026-01-19 15:05:08 [INF] Route matched with {action = "UploadFile", controller = "Files"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadFile(Microsoft.AspNetCore.Http.IFormFile, System.Nullable`1[System.Guid]) on controller Kanini.Api.Controllers.FilesController (Kanini.Api).
+2026-01-19 15:05:08 [INF] File upload started: sample_patient_data.csv, Size: 787
+2026-01-19 15:05:08 [INF] File upload completed: "21e7a015-6556-45b5-a85c-c77a0c03b6be", Path: C:\Users\maste\AppData\Local\Temp\TempUploads\21e7a015-6556-45b5-a85c-c77a0c03b6be_sample_patient_data.csv
+2026-01-19 15:05:08 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Files.FileUploadResponseDto'.
+2026-01-19 15:05:08 [INF] Executed action Kanini.Api.Controllers.FilesController.UploadFile (Kanini.Api) in 158.0695ms
+2026-01-19 15:05:08 [INF] Executed endpoint 'Kanini.Api.Controllers.FilesController.UploadFile (Kanini.Api)'
+2026-01-19 15:05:08 [INF] Request finished HTTP/1.1 POST http://localhost:5201/api/files/upload?requestId=43eb1bd2-8c72-402e-aa26-2c2a6574ae8b - 200 null application/json; charset=utf-8 256.834ms
+2026-01-19 15:05:11 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5201/api/convert/21e7a015-6556-45b5-a85c-c77a0c03b6be/detect-fields - null null
+2026-01-19 15:05:11 [INF] CORS policy execution successful.
+2026-01-19 15:05:11 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5201/api/convert/21e7a015-6556-45b5-a85c-c77a0c03b6be/detect-fields - 204 null null 31.6389ms
+2026-01-19 15:05:11 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/convert/21e7a015-6556-45b5-a85c-c77a0c03b6be/detect-fields - null null
+2026-01-19 15:05:11 [INF] CORS policy execution successful.
+2026-01-19 15:05:11 [INF] Executing endpoint 'Kanini.Api.Controllers.ConversionController.DetectFields (Kanini.Api)'
+2026-01-19 15:05:11 [INF] Route matched with {action = "DetectFields", controller = "Conversion"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DetectFields(System.Guid) on controller Kanini.Api.Controllers.ConversionController (Kanini.Api).
+2026-01-19 15:05:12 [INF] Field mapping detected for FileId: "21e7a015-6556-45b5-a85c-c77a0c03b6be", Detected: 0 fields
+2026-01-19 15:05:12 [INF] Field mapping detected for FileId: "21e7a015-6556-45b5-a85c-c77a0c03b6be", Detected: 10 fields
+2026-01-19 15:05:12 [INF] Executing OkObjectResult, writing value of type 'Kanini.Application.DTOs.Conversion.FieldDetectionResponseDto'.
+2026-01-19 15:05:12 [INF] Executed action Kanini.Api.Controllers.ConversionController.DetectFields (Kanini.Api) in 1543.2724ms
+2026-01-19 15:05:12 [INF] Executed endpoint 'Kanini.Api.Controllers.ConversionController.DetectFields (Kanini.Api)'
+2026-01-19 15:05:12 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/convert/21e7a015-6556-45b5-a85c-c77a0c03b6be/detect-fields - 200 null application/json; charset=utf-8 1699.2013ms
+2026-01-19 15:05:37 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:05:37 [INF] CORS policy execution successful.
+2026-01-19 15:05:37 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:05:37 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:05:37 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:05:37 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 39.9896ms
+2026-01-19 15:05:37 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:05:37 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 109.9152ms
+2026-01-19 15:06:07 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:06:07 [INF] CORS policy execution successful.
+2026-01-19 15:06:07 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:06:07 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:06:07 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:06:07 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.4648ms
+2026-01-19 15:06:07 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:06:07 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 81.2799ms
+2026-01-19 15:06:37 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:06:37 [INF] CORS policy execution successful.
+2026-01-19 15:06:37 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:06:37 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:06:37 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:06:37 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 32.6341ms
+2026-01-19 15:06:37 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:06:37 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 89.044ms
+2026-01-19 15:07:07 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:07:07 [INF] CORS policy execution successful.
+2026-01-19 15:07:07 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:07:07 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:07:07 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:07:07 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 12.0284ms
+2026-01-19 15:07:07 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:07:07 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 92.2452ms
+2026-01-19 15:07:50 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:07:50 [INF] CORS policy execution successful.
+2026-01-19 15:07:50 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:07:50 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:07:50 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:07:50 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 33.2222ms
+2026-01-19 15:07:50 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:07:50 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 108.341ms
+2026-01-19 15:08:50 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:08:50 [INF] CORS policy execution successful.
+2026-01-19 15:08:50 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:08:50 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:08:50 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:08:50 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 28.6943ms
+2026-01-19 15:08:50 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:08:50 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 99.9342ms
+2026-01-19 15:11:52 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:11:52 [INF] CORS policy execution successful.
+2026-01-19 15:11:52 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:11:52 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 15:11:52 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Kanini.Application.DTOs.DataRequests.DataRequestResponseDto, Kanini.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-19 15:11:52 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 38.2941ms
+2026-01-19 15:11:52 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:11:52 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 200 null application/json; charset=utf-8 102.4085ms
+2026-01-19 15:11:54 [INF] Request starting HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - null null
+2026-01-19 15:11:54 [INF] CORS policy execution successful.
+2026-01-19 15:11:54 [INF] Executing endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 15:11:54 [INF] Route matched with {action = "GetRequests", controller = "DataRequests"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetRequests(Boolean) on controller Kanini.Api.Controllers.DataRequestsController (Kanini.Api).
+2026-01-19 18:59:54 [ERR] Error executing stored procedure: sp_GetDataRequestsByOrganization
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 72
+ClientConnectionId:dadd5a28-0753-4787-8be7-b3c27c779b83
+Error Number:-2,State:0,Class:11
+2026-01-19 18:59:56 [ERR] Error getting data requests for organization "d97fe50d-9bfc-4ae6-b188-e288d6233f95"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 72
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 23
+ClientConnectionId:dadd5a28-0753-4787-8be7-b3c27c779b83
+Error Number:-2,State:0,Class:11
+2026-01-19 18:59:58 [ERR] Error getting data requests for organization "d97fe50d-9bfc-4ae6-b188-e288d6233f95"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.CheckThrowSNIException()
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Kanini.Data.Infrastructure.DatabaseReader.QueryAsync[T](String storedProcedure, Object parameters) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Infrastructure\DatabaseReader.cs:line 72
+   at Kanini.Data.Repositories.DataRequests.DataRequestReadRepository.GetByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Data\Repositories\DataRequests\DataRequestReadRepository.cs:line 23
+   at Kanini.Application.Services.DataRequests.DataRequestService.GetRequestsByOrganizationAsync(Guid organizationId, Boolean isRequesting) in C:\Users\maste\Documents\Kanini\Fhir _PE\development\Kanini.Application\Services\DataRequests\DataRequestService.cs:line 85
+ClientConnectionId:dadd5a28-0753-4787-8be7-b3c27c779b83
+Error Number:-2,State:0,Class:11
+2026-01-19 20:59:30 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-19 20:59:30 [INF] Executed action Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api) in 20856460.5045ms
+2026-01-19 20:59:30 [INF] Executed endpoint 'Kanini.Api.Controllers.DataRequestsController.GetRequests (Kanini.Api)'
+2026-01-19 20:59:31 [INF] Request finished HTTP/1.1 GET http://localhost:5201/api/data-requests?isRequesting=true - 499 null application/json; charset=utf-8 20856698.6687ms

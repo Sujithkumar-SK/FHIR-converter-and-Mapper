@@ -1,12 +1,15 @@
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace Kanini.Application.Services.Terminology;
 
 public class TerminologyMappingService : ITerminologyMappingService
 {
     private readonly ILogger<TerminologyMappingService> _logger;
+    private readonly HttpClient? _httpClient;
+    private const string FhirTerminologyServer = "https://tx.fhir.org/r4";
     
-    // LOINC mappings for common lab tests
+    
     private readonly Dictionary<string, (string code, string display)> _loincMappings = new(StringComparer.OrdinalIgnoreCase)
     {
         // Hematology
@@ -60,7 +63,7 @@ public class TerminologyMappingService : ITerminologyMappingService
         ["Oxygen Saturation"] = ("2708-6", "Oxygen saturation in Arterial blood")
     };
     
-    // UCUM mappings for common units
+
     private readonly Dictionary<string, (string code, string display)> _ucumMappings = new(StringComparer.OrdinalIgnoreCase)
     {
         // Mass/Volume
@@ -124,6 +127,15 @@ public class TerminologyMappingService : ITerminologyMappingService
     public TerminologyMappingService(ILogger<TerminologyMappingService> logger)
     {
         _logger = logger;
+        try
+        {
+            _httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(3) };
+        }
+        catch
+        {
+            _logger.LogWarning("Failed to initialize HttpClient, will use local cache only");
+            _httpClient = null;
+        }
     }
 
     public (string system, string code, string display) ResolveObservationCode(string testName)
@@ -136,13 +148,22 @@ public class TerminologyMappingService : ITerminologyMappingService
 
         var normalizedTestName = testName.Trim();
         
+        if (_httpClient != null)
+        {
+            var apiResult = TryGetLoincFromApiAsync(normalizedTestName).GetAwaiter().GetResult();
+            if (apiResult.HasValue)
+            {
+                _logger.LogInformation("LOINC code retrieved from API for '{TestName}': {Code}", testName, apiResult.Value.code);
+                return ("http://loinc.org", apiResult.Value.code, apiResult.Value.display);
+            }
+        }
+        
         if (_loincMappings.TryGetValue(normalizedTestName, out var mapping))
         {
-            _logger.LogDebug("LOINC mapping found for '{TestName}': {Code}", testName, mapping.code);
+            _logger.LogDebug("LOINC mapping found in local cache for '{TestName}': {Code}", testName, mapping.code);
             return ("http://loinc.org", mapping.code, mapping.display);
         }
 
-        // Fallback: use text only
         _logger.LogWarning("No LOINC mapping found for test name: '{TestName}', using text fallback", testName);
         return ("http://terminology.hl7.org/CodeSystem/observation-category", "survey", normalizedTestName);
     }
@@ -177,5 +198,49 @@ public class TerminologyMappingService : ITerminologyMappingService
     {
         return !string.IsNullOrWhiteSpace(unit) && 
                _ucumMappings.ContainsKey(unit.Trim());
+    }
+
+    private async Task<(string code, string display)?> TryGetLoincFromApiAsync(string testName)
+    {
+        if (_httpClient == null)
+            return null;
+            
+        try
+        {
+            var searchUrl = $"{FhirTerminologyServer}/CodeSystem/$lookup?system=http://loinc.org&display={Uri.EscapeDataString(testName)}";
+            
+            var response = await _httpClient.GetAsync(searchUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var json = JsonDocument.Parse(content);
+                
+                if (json.RootElement.TryGetProperty("parameter", out var parameters))
+                {
+                    string? code = null;
+                    string? display = null;
+                    
+                    foreach (var param in parameters.EnumerateArray())
+                    {
+                        if (param.TryGetProperty("name", out var name))
+                        {
+                            if (name.GetString() == "code" && param.TryGetProperty("valueCode", out var valueCode))
+                                code = valueCode.GetString();
+                            if (name.GetString() == "display" && param.TryGetProperty("valueString", out var valueString))
+                                display = valueString.GetString();
+                        }
+                    }
+                    
+                    if (!string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(display))
+                        return (code, display);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "Failed to retrieve LOINC from API for '{TestName}', using fallback", testName);
+        }
+        
+        return null;
     }
 }
